@@ -10,7 +10,7 @@ import AOS from 'aos';
 export class HomeComponent implements OnInit {
   // variables
   title = 'angular_senasoft';
-  language: string = 'en';
+  language: string = 'es';
   buttonMode: HTMLButtonElement;
   iconMoon: string =
     '<img src="../assets/icons-template/icons/moon.svg" alt="moon icon"/>';

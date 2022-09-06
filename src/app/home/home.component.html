@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-md fixed-top pe-5">
   <div class="container-fluid">
     <a class="navbar-brand fs-2 fw-bold text-blue-king" routerLink="/">
-      Flex Start</a
+      Quorum</a
     >
     <button
       class="navbar-toggler"
@@ -106,9 +106,7 @@
       <!-- Button trigger modal -->
       <a
         class="open-modal btn btn-teal fs-4 fw-bold col-6 py-2 mx-auto"
-        data-bs-toggle="modal"
-        data-bs-target="#Modal"
-        (click)="openModal()"
+        routerLink="login"
       >
         {{ "button_home_section" | translate }}
       </a>
@@ -120,7 +118,7 @@
       data-aos-delay="500"
     >
       <img
-        src="../assets/img/home.svg"
+        src="../assets/img/undraw_share_opinion_re_4qk7.svg"
         alt="Developers Illustration"
         id="image-home"
       />
@@ -136,13 +134,13 @@
       data-aos-duration="1000"
       data-aos-delay="500"
     >
-      <h5 class="fs-5 fw-bold text-blue-king">
+      <h5 class="fs-4 mb-2 fw-bold text-blue-king text-center">
         {{ "subtitle_about_section" | translate }}
       </h5>
-      <h4 class="fs-3 fw-bold text-dark-blue">
+      <h4 class="fs-2 mb-2 fw-bold text-dark-blue text-center">
         {{ "title_about_section" | translate }}
       </h4>
-      <p class="my-2">
+      <p class="my-2 text-center fs-5">
         {{ "description_about_section" | translate }}
       </p>
     </div>
@@ -242,7 +240,7 @@
   </div>
 </footer>
 <!-- Modal -->
-<!-- 
+<!--
 <section [ngClass]="isOpenModal?'modal--show':'modal'">
   <div class="modal-content">
     <div class="pe-4 pt-4 text-end">
