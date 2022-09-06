@@ -1,0 +1,329 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md fixed-top pe-5">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-2 fw-bold text-blue-king" routerLink="/">
+      Flex Start</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <!-- LINKS NAVBAR -->
+        <a
+          class="nav-link fw-bold text-gray-light"
+          id="menu-link"
+          href="#home"
+          >{{ "link_one_index" | translate }}</a
+        >
+        <a
+          class="nav-link fw-bold text-gray-light"
+          id="menu-link"
+          href="#about"
+          >{{ "link_two_index" | translate }}</a
+        >
+        <a
+          class="nav-link fw-bold text-gray-light"
+          id="menu-link"
+          href="#services"
+          >{{ "link_three_index" | translate }}</a
+        >
+        <a
+          class="nav-link fw-bold text-gray-light"
+          id="menu-link"
+          href="#contact"
+          >{{ "link_four_index" | translate }}</a
+        >
+        <a
+          class="nav-link btn btn-blue-king text-light fw-bold mt-1 mb-3 me-2"
+          routerLink="/login"
+          >{{ "button_navbar" | translate }}</a
+        >
+        <div class="d-flex">
+          <button
+            class="nav-link fw-bold bg-transparent border-0 mb-4"
+            id="icon_mode"
+            (click)="toggleDarkMode()"
+            [(ngModel)]="buttonMode"
+            [innerHTML]="!isDark ? iconMoon : iconSun"
+          ></button>
+          <!-- FLAGS  -->
+          <div id="flags" class="d-flex">
+            <p
+              class="nav-link"
+              data-language="es"
+              (click)="changeLanguage('es')"
+            >
+              <img src="../assets/img/españa.png" alt="españa" width="20" />
+            </p>
+            <p
+              class="nav-link"
+              data-language="en"
+              (click)="changeLanguage('en')"
+            >
+              <img
+                src="../assets/img/reino_unido.png"
+                alt="reino unido"
+                width="20"
+              />
+            </p>
+            <p
+              class="nav-link"
+              data-language="fr"
+              (click)="changeLanguage('fr')"
+            >
+              <img src="../assets/img/frances.png" alt="francia" width="20" />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Home -->
+<div class="container" id="home">
+  <div class="row vh-100 gap-5">
+    <div
+      class="col-md-6 d-flex flex-column justify-content-center h-100 text-center text-md-justify"
+      data-aos="fade-down"
+      data-aos-duration="1000"
+      data-aos-delay="500"
+    >
+      <h1 class="text-blue-king display-5 fw-bold mb-2">
+        {{ "title_home_section" | translate }}
+      </h1>
+      <p class="fw-semibold fs-4 my-3">
+        {{ "description_home_section" | translate }}
+      </p>
+      <!-- Button trigger modal -->
+      <a
+        class="open-modal btn btn-teal fs-4 fw-bold col-6 py-2 mx-auto"
+        data-bs-toggle="modal"
+        data-bs-target="#Modal"
+        (click)="openModal()"
+      >
+        {{ "button_home_section" | translate }}
+      </a>
+    </div>
+    <div
+      class="col-md-5 justify-content-center align-items-center h-100 d-none d-md-flex"
+      data-aos="zoom-in-left"
+      data-aos-duration="1000"
+      data-aos-delay="500"
+    >
+      <img
+        src="../assets/img/home.svg"
+        alt="Developers Illustration"
+        id="image-home"
+      />
+    </div>
+  </div>
+</div>
+<!-- About -->
+<div class="container" id="about">
+  <div class="row vh-100 gap-5">
+    <div
+      class="col-md-6 d-flex flex-column justify-content-center"
+      data-aos="fade-up-right"
+      data-aos-duration="1000"
+      data-aos-delay="500"
+    >
+      <h5 class="fs-5 fw-bold text-blue-king">
+        {{ "subtitle_about_section" | translate }}
+      </h5>
+      <h4 class="fs-3 fw-bold text-dark-blue">
+        {{ "title_about_section" | translate }}
+      </h4>
+      <p class="my-2">
+        {{ "description_about_section" | translate }}
+      </p>
+    </div>
+    <div
+      class="col-md-5 d-flex justify-content-center align-items-center"
+      data-aos="fade-up-left"
+      data-aos-duration="1000"
+      data-aos-delay="500"
+    >
+      <img
+        src="../assets/img/about.svg"
+        alt="Developers Team Illustration"
+        id="image-home"
+      />
+    </div>
+  </div>
+</div>
+<!-- Services -->
+<div class="container" id="services">
+  <div class="row d-flex justify-content-between" id="container-cards-services">
+    <!-- First Card -->
+    <div
+      class="col-md-4 d-flex justify-content-center align-items-center flex-column text-center"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="500"
+    >
+      <h3>
+        {{ "card_01_title" | translate }}
+      </h3>
+      <p>
+        {{ "card_01_description" | translate }}
+      </p>
+      <div class="w-100 bg-primary p-1"></div>
+    </div>
+    <!-- Second Card -->
+    <div
+      class="col-md-4 d-flex justify-content-center align-items-center flex-column text-center"
+      data-aos="fade-up"
+      data-aos-duration="1200"
+      data-aos-delay="500"
+    >
+      <h3>
+        {{ "card_02_title" | translate }}
+      </h3>
+      <p class="my-3">
+        {{ "card_02_description" | translate }}
+      </p>
+      <div class="w-100 bg-info p-1"></div>
+    </div>
+    <!-- Three Card -->
+    <div
+      class="col-md-4 d-flex justify-content-center align-items-center flex-column text-center"
+      data-aos="fade-up"
+      data-aos-duration="1400"
+      data-aos-delay="500"
+    >
+      <h3>
+        {{ "card_03_title" | translate }}
+      </h3>
+      <p>
+        {{ "card_03_description" | translate }}
+      </p>
+      <div class="w-100 bg-teal p-1"></div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="container" id="contact">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="fs-3 text-blue-king fw-bold">Flex Start</h2>
+    <div>
+      <img
+        src="../assets/icons-template/icons/twitter.svg"
+        alt=""
+        width="30"
+        class="mx-3"
+      />
+      <img
+        src="../assets/icons-template/icons/facebook.svg"
+        alt=""
+        width="30"
+        class="mx-3"
+      />
+      <img
+        src="../assets/icons-template/icons/youtube.svg"
+        alt=""
+        width="30"
+        class="mx-3"
+      />
+    </div>
+  </div>
+  <div class="text-center">
+    <p class="text-teal">
+      {{ "footer_title" | translate }}
+    </p>
+  </div>
+</footer>
+<!-- Modal -->
+<!-- 
+<section [ngClass]="isOpenModal?'modal--show':'modal'">
+  <div class="modal-content">
+    <div class="pe-4 pt-4 text-end">
+      <p class="modal__close" (click)="closeModal()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="currentColor"
+          class="bi bi-x-circle"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+          />
+          <path
+            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+          />
+        </svg>
+      </p>
+    </div>
+
+    <div class="w-75 me-auto ms-auto">
+      <h2 class="display-4 text-center fw-bold text-blue-king" id="title_modal">
+        {{ "register_title" | translate }}
+      </h2>
+      <form action="" method="post">
+        <div class="mb-5">
+          <label for="name" class="form-label fw-bold fs-4">
+            {{ "register_label_name" | translate }}
+          </label>
+          <input
+            type="text"
+            class="form-control fs-5 bg-transparent text-gray-light"
+            id="name"
+            placeholder="David"
+          />
+        </div>
+        <div class="mb-5">
+          <label for="lastname" class="form-label fw-bold fs-4">
+            {{ "register_label_lastName" | translate }}
+          </label>
+          <input
+            type="text"
+            class="form-control fs-5 bg-transparent text-gray-light"
+            id="lastname"
+            placeholder="Garcia"
+          />
+        </div>
+        <div class="mb-5">
+          <label for="numberdocument" class="form-label fw-bold fs-4">
+            {{ "register_label_numberDocument" | translate }}
+          </label>
+          <input
+            type="number"
+            class="form-control fs-5 bg-transparent text-gray-light"
+            id="numberdocument"
+            placeholder="Col: 101805421"
+          />
+        </div>
+        <div class="mb-5">
+          <label for="email" class="form-label fw-bold fs-4">
+            {{ "register_label_email" | translate }}
+          </label>
+          <input
+            type="email"
+            class="form-control fs-5 bg-transparent text-gray-light"
+            id="email"
+            placeholder="user@example.com"
+          />
+        </div>
+
+        <div class="d-grid">
+          <a
+            class="btn btn-teal p-3 w-75 fw-bold rounded shadow-sm fs-5 m-auto"
+            routerLink="login"
+          >
+            {{ "register_title" | translate }}
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section> -->
