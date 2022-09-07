@@ -12,6 +12,8 @@ import AOS from 'aos';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterThemeComponent } from './register-theme/register-theme.component';
+import { CreateQuestionComponent } from './create-question/create-question.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -23,7 +25,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     HomeComponent,
     DashboardComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    RegisterThemeComponent,
+    CreateQuestionComponent
   ],
   imports: [
     BrowserModule,

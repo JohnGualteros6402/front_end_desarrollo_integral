@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../classes/user';
 import { UserService } from '../services/user.service';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -57,31 +58,44 @@ export class DashboardComponent implements OnInit {
       this.users = data;
     })
   }
-  // deleteUser(id:number){
-  //   swal({
-  //       title: '¿Estas seguro?',
-  //       text: "Confirma si deseas eliminar al empleado",
-  //       type: 'warning',
-  //       showCancelButton: true,
-  //       confirmButtonColor: '#3085d6',
-  //       cancelButtonColor: '#d33',
-  //       confirmButtonText: 'Si , elimínalo',
-  //       cancelButtonText: 'No, cancelar',
-  //       confirmButtonClass: 'btn btn-success',
-  //       cancelButtonClass: 'btn btn-danger',
-  //       buttonsStyling: true
-  //     }).then((result) => {
-  //       if(result.value){
-  //         this.userService.deleteUser(id).subscribe(data=>{
-  //           this.getUsers();
-  //           swal(
-  //             'Empleado eliminado',
-  //             'El empleado ha sido eliminado con exito',
-  //             'success'
-  //           )
-  //         })
-  //       }
-  //     })
-  // }
+  deleteUser(id:number){
+    Swal.fire({
+      title: 'Estas seguro de eliminar al usuario?',
+      text: "No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#0051de',
+      cancelButtonColor: '#2ACFB9',
+      confirmButtonText: 'Sí, eliminalo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.deleteUser(id).subscribe(data=>{
+        this.getUsers();
+        Swal.fire(
+          'Eliminado!',
+          'el usuario ah sido eliminado correctamente.',
+          'success'
+        )
+        })
+      }
+    });
+  }
+  // Function for open alert for show confirm button if it's clicked then should redirect to view, create new theme
+  openAlertCreateThemeConfirm(){
+    Swal.fire({
+      title: '<strong>Crear Tema</strong>',
+      text: `si la respuesta es si da Click en el boton`,
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#0051de',
+      cancelButtonColor: '#2ACFB9',
+      confirmButtonText: 'Crear Nuevo Tema',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['registerTheme']);
+      }
+    })
+  }
 
 }

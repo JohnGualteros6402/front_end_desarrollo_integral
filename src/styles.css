@@ -396,7 +396,21 @@ body .container_login{
 
     width: 75vw;
   }
+  .content_register_form_user{
+    width: 100%;
+  }
 }
 #flags p{
   cursor: pointer;
+}
+.container_register_user_form{
+  width: 100%;
+  height: auto;
+  background-color:#0051de;
+
+}
+.content_register_form_user{
+  width: 60%;
+  background-color: #fff;
+  padding: 80px;
 }

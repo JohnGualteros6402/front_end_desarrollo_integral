@@ -8,9 +8,8 @@
       width="70"
     />
     <div class="d-flex justify-content-between align-items-center">
-      <p class="fs-5 fw-bold px-2 mt-3" id="user_dashboard">
-        John Gualteros
-      </p>
+      <button class="btn btn-blue-king fw-bold rounded" routerLink="/createQuestion">Create new Question</button>
+      <p class="fs-5 fw-bold px-2 mt-3" id="user_dashboard">John Gualteros</p>
       <button
           class="nav-link fw-bold bg-transparent border-0 mx-3"
           id="icon_mode"
@@ -30,20 +29,23 @@
         class="fw-bold text-decoration-none text_mode_light"
         id="icon_sidebar"
       >
-        <img src="../../assets/icons-template/icons/bxs-user-circle.svg"
-        width="30" alt="user-photo" />
+        <img
+          src="../../assets/icons-template/icons/bxs-user-circle.svg"
+          width="30"
+          alt="user-photo"
+        />
       </a>
       <a
-        href="../public/dashboard.html"
         class="fw-bold text-decoration-none text_mode_light"
         id="icon_sidebar"
+        (click)="openAlertCreateThemeConfirm()"
       >
         <img
-          src="../../assets/icons-template/icons/gear.svg"
+          src="../../assets/icons-template/icons/plus-lg.svg"
           width="30"
           alt="settings-icon"
         />
-      </a>
+    </a>
       <a
         href="../public/index.html"
         class="fw-bold text-decoration-none text_mode_light"
@@ -62,7 +64,9 @@
         class="section_content_dashboard estadistic d-flex justify-content-center align-items-center"
         id="container_estadistic"
       >
-        <h2 class="fw-bold text-center">Número de preguntas en total hechas: 48</h2>
+        <h2 class="fw-bold text-center">
+          Número de preguntas en total hechas: 48
+        </h2>
       </div>
       <div
         class="section_content_dashboard estadistic d-flex justify-content-center align-items-center"
@@ -71,36 +75,33 @@
         <h2 class="fw-bold text-center">Número de respuestas en total: 16</h2>
       </div>
 
-      <div
-        class="section_content_dashboard table-responsive container_table"
-      >
+      <div class="section_content_dashboard table-responsive container_table">
         <table class="table" id="datat">
           <thead>
             <tr>
-              <th class="text-center" *ngFor="let title of tableUsersHeaders">{{ title }}</th>
+              <th class="text-center" *ngFor="let title of tableUsersHeaders">
+                {{ title }}
+              </th>
             </tr>
           </thead>
           <tbody class="text-center">
             <tr *ngFor="let user of users">
-              <td>{{user.numberdocument}}</td>
-              <td>{{user.name}} - {{user.lastname}}</td>
-              <td>{{user.address}}</td>
-              <td>{{user.email}}</td>
-              <td>{{user.numberphone}} - {{user.landline}}</td>
-              <td>{{user.datebirth}}</td>
-              <td>{{user.municipality}}</td>
-              <td>{{user.stratum}}</td>
-              <td>{{user.academiclevel}}</td>
-              <td>{{user.sex}}</td>
-              <td>{{user.affiliationregime}}</td>
-              <td>{{user.disabilitycondition}}</td>
-              <td>{{user.ethnicity}}</td>
-              <td>{{user.technologicalaccess}}</td>
+              <td>{{ user.numberdocument }}</td>
+              <td>{{ user.name }} - {{ user.lastname }}</td>
+              <td>{{ user.address }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.numberphone }} - {{ user.landline }}</td>
+              <td>{{ user.datebirth }}</td>
+              <td>{{ user.municipality }}</td>
+              <td>{{ user.stratum }}</td>
+              <td>{{ user.academiclevel }}</td>
+              <td>{{ user.sex }}</td>
+              <td>{{ user.affiliationregime }}</td>
+              <td>{{ user.disabilitycondition }}</td>
+              <td>{{ user.ethnicity }}</td>
+              <td>{{ user.technologicalaccess }}</td>
               <td>
-                <button
-                  href="#"
-                  class="p-2 border-0 rounded text-dark bg-teal"
-                >
+                <button href="#" class="p-2 border-0 rounded text-dark bg-teal">
                   <img
                     src="../../assets/icons-template/icons/pencil-fill.svg"
                     alt="edit-icon"
@@ -108,6 +109,7 @@
                   />
                 </button>
                 <button
+                  (click)="deleteUser(user.iduser)"
                   href="#"
                   class="p-2 border-0 rounded text-dark bg-danger"
                 >

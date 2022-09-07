@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateQuestionComponent } from './create-question/create-question.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterThemeComponent } from './register-theme/register-theme.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 
 const routes: Routes = [
@@ -11,6 +13,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'registerUser', component: RegisterUserComponent},
+  { path: 'registerTheme', component: RegisterThemeComponent},
+  { path: 'createQuestion', component: CreateQuestionComponent},
   { path: '**', redirectTo: 'home' }
 ];
 
