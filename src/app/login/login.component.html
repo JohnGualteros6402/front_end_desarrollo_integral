@@ -49,7 +49,8 @@
             type="email"
             class="form-control fs-5 bg-transparent text-gray-light"
             placeholder="user@gmail.com"
-            [(ngModel)]="employee.email"
+            [(ngModel)]="user.email"
+
             name="email"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
             required
@@ -78,7 +79,7 @@
             class="form-control fs-5 bg-transparent text-gray-light"
             id="password"
             placeholder="1234567890"
-            [(ngModel)]="employee.password"
+            [(ngModel)]="user.password"
             name="password"
             required
             #password="ngModel"
@@ -105,6 +106,7 @@
         class="btn btn-blue-king w-100 fw-bold rounded shadow-sm my-5 fs-5 py-2"
         id="btnLogin"
         [disabled]="employeeForm.invalid"
+        (click)="validateUser()"
       >
         <a routerLink="/" class="text-decoration-none text-light px-5">
           {{ "login_button" | translate }}

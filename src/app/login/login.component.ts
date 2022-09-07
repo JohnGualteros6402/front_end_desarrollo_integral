@@ -19,10 +19,14 @@ export class LoginComponent implements OnInit {
     '<img src="../assets/icons-template/icons/brightness-high.svg" alt="sun icon"/>';
   isDark: boolean = false;
   email: HTMLInputElement ;
-  employee : User = new User;
+  user : User = new User;
 
 
-  constructor(public translate: TranslateService, private userService: UserService, private router: Router) {
+
+  responseValidation: boolean = false;
+
+
+  constructor(public translate: TranslateService, private userService:UserService, private router: Router) {
     this.translate.addLangs(['en', 'es']);
     this.translate.setDefaultLang('en');
     this.translate.use(this.language);
@@ -43,5 +47,11 @@ export class LoginComponent implements OnInit {
   }
   redirectHome(){
     this.router.navigate(['/employees']);
+  }
+  validateUser(): void{
+    this.userService.validationUser(this.user.email, this.user.password).subscribe(data => {
+      console.log(data);
+    });
+    // console.log(this.user.email+" "+ this.user.password);
   }
 }

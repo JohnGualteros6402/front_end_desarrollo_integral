@@ -27,4 +27,9 @@ export class UserService {
   deleteUser(id:number): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+
+  // Validation Users (LoginComponent)
+  validationUser(email:string, password:string): Observable<Object>{
+    return  this.httpClient.get(`${this.baseURL}/${email}/${password}`);
+  }
 }
