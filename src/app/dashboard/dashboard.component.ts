@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../classes/user';
 import { UserService } from '../services/user.service';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -26,6 +25,7 @@ export class DashboardComponent implements OnInit {
     'condición de discapacidad',
     'etnia',
     'acceso tecnológico',
+    'acciones'
   ];
   buttonMode: HTMLButtonElement;
   users:User[];

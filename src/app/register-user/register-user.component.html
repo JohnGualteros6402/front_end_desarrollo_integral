@@ -1,0 +1,169 @@
+<div class="container_register_user_form">
+  <div class="content_register_form_user">
+    <h1 class="text-center">
+      Registrar nuevo empleado
+    </h1>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <!-- Input number document -->
+      <div class="mb-3">
+        <label for="name">Número de documento</label>
+        <input
+          type="number"
+          class="form-control"
+          id="numberdocument"
+          placeholder="Digite su número de documento"
+          [(ngModel)]="user.numberdocument"
+          name="numberdocument"
+          required
+          #numberdocument="ngModel"
+        />
+        <div class="text-danger" *ngIf="numberdocument.invalid && (numberdocument.dirty || numberdocument.touched)">
+          <div *ngIf="numberdocument.errors?.['required']">
+            El número de documento es obligatorio
+          </div>
+        </div>
+      </div>
+      <!-- Input name -->
+      <div class="mb-3">
+        <label for="name">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Digite su nombre"
+          [(ngModel)]="user.name"
+          name="name"
+          required
+          #name="ngModel"
+        />
+        <div class="text-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors?.['required']">
+            El nombre es obligatorio
+          </div>
+        </div>
+      </div>
+      <!-- Input lastname -->
+      <div class="mb-3">
+        <label for="lastname">Apellido</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          placeholder="Digite su apellido"
+          [(ngModel)]="user.lastname"
+          name="lastname"
+          required
+          #lastname="ngModel"
+        />
+        <div class="text-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+          <div *ngIf="lastname.errors?.['required']">
+            El apellido es obligatorio
+          </div>
+        </div>
+      </div>
+      <!-- Input address -->
+      <div class="mb-3">
+        <label for="address">Dirección</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          placeholder="Digite su dirección"
+          [(ngModel)]="user.address"
+          name="address"
+          required
+          #address="ngModel"
+        />
+        <div class="text-danger" *ngIf="address.invalid && (address.dirty || address.touched)">
+          <div *ngIf="address.errors?.['required']">
+            La dirección es obligatorio
+          </div>
+        </div>
+      </div>
+      <!-- Input email -->
+      <div class="mb-3">
+        <label for="email">Correo</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Digite su Correo"
+          [(ngModel)]="user.email"
+          name="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          required
+          #email="ngModel"
+        />
+        <!-- Regex expression for email validation-->
+        <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors?.['required']">
+            El correo es obligatorio.
+          </div>
+          <div *ngIf="email.errors?.['pattern']">
+            El correo deberia tener un email valido. por ejemplo ejemplo@gmail.com
+          </div>
+        </div>
+      </div>
+      <!-- Input numberphone -->
+      <div class="mb-3">
+        <label for="numberphone">Número de teléfono</label>
+        <input
+          type="number"
+          class="form-control"
+          id="numberphone"
+          placeholder="Digite su teléfono"
+          [(ngModel)]="user.numberphone"
+          name="numberphone"
+          required
+          #numberphone="ngModel"
+        />
+        <div class="text-danger" *ngIf="numberphone.invalid && (numberphone.dirty || numberphone.touched)">
+          <div *ngIf="numberphone.errors?.['required']">
+            El número de teléfono es obligatorio
+          </div>
+        </div>
+      </div>
+      <!-- Input landline -->
+      <div class="mb-3">
+        <label for="landline">Número de teléfono</label>
+        <input
+          type="text"
+          class="form-control"
+          id="landline"
+          placeholder="Digite su Número de teléfono fijo"
+          [(ngModel)]="user.landline"
+          name="landline"
+          required
+          #landline="ngModel"
+        />
+        <div class="text-danger" *ngIf="landline.invalid && (landline.dirty || landline.touched)">
+          <div *ngIf="landline.errors?.['required']">
+            El telefono fijo es obligatorio
+          </div>
+        </div>
+      </div>
+      <!-- Input date birth -->
+      <div class="mb-3">
+        <label for="datebirth">Fceha de nacieminto</label>
+        <input
+          type="date"
+          class="form-control"
+          id="datebirth"
+          placeholder="Digite su fceha de nacieminto"
+          [(ngModel)]="user.datebirth"
+          name="datebirth"
+          required
+          #datebirth="ngModel"
+        />
+        <div class="text-danger" *ngIf="datebirth.invalid && (datebirth.dirty || datebirth.touched)">
+          <div *ngIf="datebirth.errors?.['required']">
+            La fecha de nacimiento es obligatorio
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let municipality of municipies">
+        <p>{{municipality}}</p>
+      </div>
+    </form>
+  </div>
+</div>

@@ -5,7 +5,7 @@ export class User {
   lastname: string;
   address: string;
   email: string;
-  numberPhone: string;
+  numberphone: string;
   landline: string;
   datebirth: string;
   municipality: string;

@@ -335,7 +335,7 @@ body .container_login{
   gap: 40px;
   padding: 30px;
   grid-template-columns: 50% auto;
-  grid-template-rows: 50% auto;
+  grid-template-rows: 30% auto;
 }
 .darkmode .containerRegister, .darkmode h2{
   color:white;
