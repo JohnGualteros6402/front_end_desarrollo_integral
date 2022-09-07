@@ -1,1 +1,38 @@
-<p>register-theme works!</p>
+<div
+  class="vw-100 vh-100 bg-gray-light d-flex justify-content-center align-items-center"
+  id="container_register_theme"
+>
+  <div class="bg-light rounded shadow p-5">
+    <h1 class="text-center text-blue-king fw-bold display-5">Registrar Tema</h1>
+    <form (ngSubmit)="onSubmit()" #surveyForm="ngForm" method="post">
+      <!-- Input number document -->
+      <div class="mb-3 mt-5">
+        <label for="theme" class="fs-5 fw-bold my-2">Tema</label>
+        <input
+          type="text"
+          class="form-control"
+          id="theme"
+          placeholder="Digite el nombre del tema"
+          [(ngModel)]="survey.theme"
+          name="theme"
+          required
+          #theme="ngModel"
+        />
+        <div
+          class="text-danger"
+          *ngIf="theme.invalid && (theme.dirty || theme.touched)"
+        >
+          <div *ngIf="theme.errors?.['required']">El tema es obligatorio</div>
+        </div>
+      </div>
+      <button
+        class="btn btn-blue-king w-100 fw-bold rounded shadow-sm my-5 fs-5 py-2"
+        id="btnLogin"
+        [disabled]="surveyForm.invalid"
+      >
+        Crear Tema
+      </button>
+    </form>
+    <a routerLink="/dashboard" class="text-center fw-bold">Volver atras</a>
+  </div>
+</div>
