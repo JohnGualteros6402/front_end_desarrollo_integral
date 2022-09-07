@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForumComponent } from './forum/forum.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterThemeComponent } from './register-theme/register-theme.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'registerUser', component: RegisterUserComponent},
   { path: 'registerTheme', component: RegisterThemeComponent},
   { path: 'createQuestion', component: CreateQuestionComponent},
+  { path: 'forum', component: ForumComponent},
   { path: '**', redirectTo: 'home' }
 ];
 

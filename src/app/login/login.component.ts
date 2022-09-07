@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   isDark: boolean = false;
   email: HTMLInputElement ;
   user : User = new User;
+  isAuthenticated: any = false;
 
 
 
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.validateIsAuthenticated();
   }
   changeLanguage(language: string) {
     this.translate.use(language);
@@ -45,12 +47,21 @@ export class LoginComponent implements OnInit {
       this.isDark = false;
     }
   }
+  validateIsAuthenticated(){
+    if(localStorage.getItem('isAuthenticated')){
+      this.router.navigate(['dashboard'])
+    }
+    console.log("no esta autenticado")
+  }
   redirectHome(){
     this.router.navigate(['/employees']);
   }
   validateUser(): void{
     this.userService.validationUser(this.user.email, this.user.password).subscribe(data => {
-      console.log(data);
+      this.isAuthenticated = data;
+      localStorage.setItem('isAuthenticated', this.isAuthenticated);
+      localStorage.setItem('email', this.user.email);
+      this.router.navigate(['dashboard']);
     });
     // console.log(this.user.email+" "+ this.user.password);
   }

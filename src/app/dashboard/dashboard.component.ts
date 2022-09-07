@@ -39,6 +39,7 @@ export class DashboardComponent implements OnInit {
   constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
+    this.validateIsAuthenticated();
     this.getUsers();
     console.log(this.users);
   }
@@ -57,6 +58,18 @@ export class DashboardComponent implements OnInit {
     this.userService.getListUsers().subscribe(data=>{
       this.users = data;
     })
+  }
+  logout(){
+    if(localStorage.getItem('isAuthenticated')){
+      localStorage.removeItem('isAuthenticated')
+      this.router.navigate(['home']);
+    }
+  }
+  validateIsAuthenticated(){
+    if(localStorage.getItem('isAuthenticated')){
+      return
+    }
+    return this.router.navigate(['login']);
   }
   deleteUser(id:number){
     Swal.fire({

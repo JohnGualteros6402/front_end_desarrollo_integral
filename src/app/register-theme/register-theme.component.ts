@@ -16,8 +16,14 @@ export class RegisterThemeComponent implements OnInit {
   constructor(private surveyService: SurveyService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.validateIsAuthenticated();
   }
-
+  validateIsAuthenticated(){
+    if(localStorage.getItem('isAuthenticated')){
+      return
+    }
+    return this.router.navigate(['login']);
+  }
   saveSurvey(){
     this.surveyService.addSurvey(this.survey).subscribe(data=>{
       console.log(data);

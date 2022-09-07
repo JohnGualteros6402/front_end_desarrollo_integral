@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RegisterThemeComponent } from './register-theme/register-theme.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
+import { ForumComponent } from './forum/forum.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -27,7 +28,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DashboardComponent,
     RegisterUserComponent,
     RegisterThemeComponent,
-    CreateQuestionComponent
+    CreateQuestionComponent,
+    ForumComponent
   ],
   imports: [
     BrowserModule,

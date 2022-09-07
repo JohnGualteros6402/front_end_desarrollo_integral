@@ -16,8 +16,14 @@ export class CreateQuestionComponent implements OnInit {
   constructor(private questionService: QuestionService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.validateIsAuthenticated();
   }
-
+  validateIsAuthenticated(){
+    if(localStorage.getItem('isAuthenticated')){
+      return
+    }
+    return this.router.navigate(['login']);
+  }
   saveQuestion(){
     this.questionService.addQuestion(this.question).subscribe(data=>{
       console.log(data);
