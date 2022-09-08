@@ -1,10 +1,10 @@
 import { Survey } from "./survey";
 
 export class Question {
-  id: number;
+  idquestion: number;
   statement: string;
-  openingDate: string;
-  closingDate: string;
+  openingdate: string;
+  closingdate: string;
   state: boolean;
-  survey: Survey;
+  surkey_id: Survey;
 }

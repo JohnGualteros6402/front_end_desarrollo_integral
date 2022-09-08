@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForumComponent } from './forum/forum.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { QuestionsComponent } from './questions/questions.component';
 import { RegisterThemeComponent } from './register-theme/register-theme.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'registerTheme', component: RegisterThemeComponent},
   { path: 'createQuestion', component: CreateQuestionComponent},
   { path: 'forum', component: ForumComponent},
+  { path: 'question', component: QuestionsComponent },
   { path: '**', redirectTo: 'home' }
 ];
 

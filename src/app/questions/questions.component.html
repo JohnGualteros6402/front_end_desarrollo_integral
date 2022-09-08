@@ -8,9 +8,12 @@
       width="70"
     />
     <div class="d-flex justify-content-between align-items-center">
+      <h2 class="fw-bold text-start m-2 ">
+        Número de preguntas en total hechas: {{numberofquestions}}
+      </h2>
       <button class="btn btn-blue-king fw-bold rounded" routerLink="/createQuestion">Create new Question</button>
-      <button class="btn btn-blue-king fw-bold rounded m-2 " routerLink="/question">Listar Preguntas</button>
-      <p class="fs-5 fw-bold px-2 mt-3" id="user_dashboard">John Gualteros</p>
+      <button class="btn btn-blue-king fw-bold rounded m-2" routerLink="/question">Listar Preguntas</button>
+      <p class="fs-5 fw-bold px-2 mt-3" id="user_dashboard">John Gualters</p>
       <button
           class="nav-link fw-bold bg-transparent border-0 mx-3"
           id="icon_mode"
@@ -26,6 +29,7 @@
       class="sidebar_dashboard light-bg d-flex flex-column justify-content-evenly align-items-center"
     >
       <a
+        routerLink="/dashboard"
         href="../public/cards2.html"
         class="fw-bold text-decoration-none text_mode_light"
         id="icon_sidebar"
@@ -61,59 +65,49 @@
     </div>
     <!-- Container content dashboard -->
     <div class="content_dashboard">
-      <div
-        class="section_content_dashboard estadistic d-flex justify-content-center align-items-center"
-        id="container_estadistic"
-      >
-        <h2 class="fw-bold text-center">
-          Número de preguntas en total hechas: {{numberofquestions}}
-        </h2>
-      </div>
-      <div
-        class="section_content_dashboard estadistic d-flex justify-content-center align-items-center"
-        id="container_estadistic"
-      >
-        <h2 class="fw-bold text-center">Número de respuestas en total: 16</h2>
-      </div>
 
       <div class="section_content_dashboard table-responsive container_table">
+        <div class="table-responsive">
+          <h1>Sondeos</h1>
+          <table class="table table-primary">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tema</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let survey of surveysInformation" >
+                <td scope="row">{{ survey.idsurvey }}</td>
+                <td>{{ survey.theme }}</td>
+                <td class="" *ngIf="survey.status == true" ><span class="bg-success rounded p-1 fw-bold">Activo</span></td>
+              <td *ngIf="survey.status == false" ><span class="bg-danger rounded p-1 fw-bold">Inactivo</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h1>Preguntas Sondeo</h1>
         <table class="table" id="datat">
           <thead>
-            <tr>
-              <th class="text-center" *ngFor="let title of tableUsersHeaders">
-                {{ title }}
-              </th>
+            <tr class="text-center">
+
+                <th>#</th>
+                <th>Pregunta</th>
+                <th>Fecha Apertura</th>
+                <th>Fecha Cierre</th>
+                <th>Estado</th>
+
             </tr>
           </thead>
           <tbody class="text-center">
-            <tr *ngFor="let user of users">
-              <td>{{ user.numberdocument }}</td>
-              <td>{{ user.name }} - {{ user.lastname }}</td>
-              <td>{{ user.address }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{ user.numberphone }} - {{ user.landline }}</td>
-              <td>{{ user.datebirth }}</td>
-              <td>{{ user.municipality }}</td>
-              <td>{{ user.stratum }}</td>
-              <td>{{ user.academiclevel }}</td>
-              <td>{{ user.sex }}</td>
-              <td>{{ user.affiliationregime }}</td>
-              <td>{{ user.disabilitycondition }}</td>
-              <td>{{ user.ethnicity }}</td>
-              <td>{{ user.technologicalaccess }}</td>
-              <td>
-                <button
-                  (click)="deleteUser(user.iduser)"
-                  href="#"
-                  class="p-2 border-0 rounded text-dark bg-danger"
-                >
-                  <img
-                    src="../../assets/icons-template/icons/trash.svg"
-                    alt="trash-icon"
-                    width="20"
-                  />
-                </button>
-              </td>
+            <tr *ngFor="let question of questions">
+              <td>{{ question.idquestion }}</td>
+              <td>{{ question.statement }}</td>
+              <td>{{ question.openingdate }}</td>
+              <td>{{ question.closingdate }}</td>
+              <td class="" *ngIf="question.state == true" ><span class="bg-success rounded p-1 fw-bold">Activo</span></td>
+              <td *ngIf="question.state == false" ><span class="bg-danger rounded p-1 fw-bold">Inactivo</span></td>
             </tr>
           </tbody>
         </table>

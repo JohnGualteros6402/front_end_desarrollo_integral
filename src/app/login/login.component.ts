@@ -61,7 +61,9 @@ export class LoginComponent implements OnInit {
       this.isAuthenticated = data;
       localStorage.setItem('isAuthenticated', this.isAuthenticated);
       localStorage.setItem('email', this.user.email);
-      this.router.navigate(['dashboard']);
+      if(localStorage.getItem('isAuthenticated') && localStorage.getItem('isAuthenticated') == "true"){
+        this.router.navigate(['dashboard'])
+      }
     });
     // console.log(this.user.email+" "+ this.user.password);
   }

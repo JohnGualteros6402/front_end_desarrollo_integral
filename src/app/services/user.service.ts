@@ -15,6 +15,10 @@ export class UserService {
   getListUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.baseURL}`);
   }
+  findInformationUsers(email: string): Observable<User> {
+    return this.httpClient.get<User>(`${this.baseURL}/validation/${email}`);
+  }
+
   updateUser(id:number,user:User) : Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`,user);
   }

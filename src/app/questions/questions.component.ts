@@ -1,53 +1,36 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../classes/user';
-import { UserService } from '../services/user.service';
-import Swal from 'sweetalert2'
-import { QuestionService } from '../services/question.service';
+import Swal from 'sweetalert2';
 import { Question } from '../classes/question';
-@Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
-})
-export class DashboardComponent implements OnInit {
+import { Survey } from '../classes/survey';
+import { User } from '../classes/user';
+import { QuestionService } from '../services/question.service';
+import { SurveyService } from '../services/survey.service';
 
-  // Variables
-  tableUsersHeaders: string[] = [
-    'número de documento',
-    'nombres y apellidos',
-    'dirección',
-    'correo electrónico',
-    'número de teléfono - número de fijo',
-    'fecha de nacimineto',
-    'municipio',
-    'estrato',
-    'nivel académico',
-    'sexo',
-    'afiliación regimen',
-    'condición de discapacidad',
-    'etnia',
-    'acceso tecnológico',
-    'acciones'
-  ];
+@Component({
+  selector: 'app-questions',
+  templateUrl: './questions.component.html',
+  styleUrls: ['./questions.component.css']
+})
+export class QuestionsComponent implements OnInit {
   buttonMode: HTMLButtonElement;
-  users:User[];
+  questions:Question[];
+  numberofquestions:number;
+  surveysInformation:Survey[];
   iconMoon: string =
     '<img src="../assets/icons-template/icons/moon.svg" alt="moon icon"/>';
   iconSun: string =
     '<img src="../assets/icons-template/icons/brightness-high.svg" alt="sun icon"/>';
   isDark: boolean = false;
-  questions:Question[];
-  numberofquestions:number;
-  constructor(private questionService: QuestionService,private userService:UserService, private router:Router) { }
+  constructor(private questionService: QuestionService, private surveyService: SurveyService, private router: Router, private http: HttpClient) {
+    this.getQuestions();
+   }
 
   ngOnInit(): void {
-    this.validateIsAuthenticated();
     this.getQuestions();
-    this.getUsers();
-    console.log(this.users);
+    this.getSurvey();
   }
-
   // Button Events
   toggleDarkMode() {
     document.body.classList.toggle('darkmode');
@@ -57,16 +40,18 @@ export class DashboardComponent implements OnInit {
       this.isDark = false;
     }
   }
+
+  private getSurvey(){
+    this.surveyService.getListSurveys().subscribe(data => {
+      this.surveysInformation = data;
+    });
+  }
+
   private getQuestions(){
     this.questionService.getListQuestions().subscribe(data => {
       this.questions = data;
       this.numberofquestions= this.questions.length;
       console.log(this.numberofquestions);
-    })
-  }
-  private getUsers(){
-    this.userService.getListUsers().subscribe(data=>{
-      this.users = data;
     })
   }
   logout(){
@@ -81,28 +66,7 @@ export class DashboardComponent implements OnInit {
     }
     return this.router.navigate(['login']);
   }
-  deleteUser(id:number){
-    Swal.fire({
-      title: 'Estas seguro de eliminar al usuario?',
-      text: "No podrás revertir esto!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#0051de',
-      cancelButtonColor: '#2ACFB9',
-      confirmButtonText: 'Sí, eliminalo!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.userService.deleteUser(id).subscribe(data=>{
-        this.getUsers();
-        Swal.fire(
-          'Eliminado!',
-          'el usuario ah sido eliminado correctamente.',
-          'success'
-        )
-        })
-      }
-    });
-  }
+
   // Function for open alert for show confirm button if it's clicked then should redirect to view, create new theme
   openAlertCreateThemeConfirm(){
     Swal.fire({
@@ -120,6 +84,6 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
-  
+
 
 }

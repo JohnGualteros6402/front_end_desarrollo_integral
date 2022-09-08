@@ -1,5 +1,6 @@
 export class Survey {
-  id: number;
+  idsurvey: number;
   theme: string;
   status: boolean;
+  idsurvef: any;
 }

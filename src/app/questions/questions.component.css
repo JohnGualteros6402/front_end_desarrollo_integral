@@ -1,0 +1,9 @@
+.content_dashboard{
+  width: 100%;
+  height: 92vh;
+  display: grid;
+  gap: 40px;
+  padding: 30px;
+  grid-template-columns: 50% auto;
+  grid-template-rows: 100% auto;
+}
