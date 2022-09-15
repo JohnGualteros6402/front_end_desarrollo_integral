@@ -11,7 +11,7 @@ id="container_register_theme"
   <form (ngSubmit)="onSubmit()" #questionForm="ngForm" method="post">
       <div class="mb-3">
         <label for="" class="form-label">Tema Sondeo:</label>
-        <select class="form-control"   name="surkey_id" id="surkey_id" >
+        <select class="form-control" [(ngModel)]="idSurvey"  name="surkey_id" id="surkey_id" >
           <option *ngFor="let survey of surveys; index"   value="{{survey.idsurvey}}" >{{ survey.theme }}</option>
         </select>
       </div>

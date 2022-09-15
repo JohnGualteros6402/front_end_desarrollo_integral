@@ -15,6 +15,7 @@ export class CreateQuestionComponent implements OnInit {
 
   question : Question = new Question;
   surveys: Survey[];
+  idSurvey: number;
   surveyObject: Survey = new Survey;
 
   constructor(private questionService: QuestionService, private surveyService: SurveyService, private router: Router, private http: HttpClient) {
@@ -43,6 +44,13 @@ export class CreateQuestionComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
   onSubmit(){
+    this.surveyService.getSurveyById(this.idSurvey).subscribe(data => {
+      this.surveyObject.idsurvey=  data['idsurvey'];
+      this.surveyObject.theme =  data['theme'];
+      this.surveyObject.status =  data['status'];
+    });
+    this.question.surkey_id = this.surveyObject;
+    console.log(this.surveyObject)
     this.saveQuestion();
     // console.log(this.question);
   }
