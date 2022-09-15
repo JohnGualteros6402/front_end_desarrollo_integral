@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../classes/user';
 import { UserService } from '../services/user.service';
+import {Md5} from 'ts-md5';
+
 
 @Component({
   selector: 'app-register-user',
@@ -28,6 +30,7 @@ export class RegisterUserComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
   onSubmit(){
+    this.user.password = Md5.hashStr(this.user.password); 
     this.saveUser();
   }
   // Array of municipies

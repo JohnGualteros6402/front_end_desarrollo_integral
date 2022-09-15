@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Md5 } from 'ts-md5';
 import { User } from '../classes/user';
 import { UserService } from '../services/user.service';
 
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/employees']);
   }
   validateUser(): void{
+    this.user.password = Md5.hashStr(this.user.password); 
     this.userService.validationUser(this.user.email, this.user.password).subscribe(data => {
       this.isAuthenticated = data;
       localStorage.setItem('isAuthenticated', this.isAuthenticated);
