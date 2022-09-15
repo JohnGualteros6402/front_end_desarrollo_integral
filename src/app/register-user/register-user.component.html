@@ -1,9 +1,9 @@
 <div class="container_register_user_form row">
   <div class="col-md-4 d-none d-lg-block">
-    <div class="position-fixed text-center p-5">
+    <div class="position-fixed text-center">
       <h1 class="margin-200 text-light fs-3">Bienvenido de nuevo</h1>
-      <p class="text-light mt-2">Gracias por elegir participar para nosotro es es un placer</p>
-      <button class="btn btn-outline-light rounded fw-bold shadow-lg" routerLink="/login">Iniciar Sesión</button>
+      <p class="text-light mt-2 margin-300">Gracias por elegir participar para nosotro es es un placer</p>
+      <button class="btn btn-outline-light rounded fw-bold shadow-lg margin-400" routerLink="/login">Iniciar Sesión</button>
     </div>
   </div>
   <div class=" col-md-8 bg-light p-5">
@@ -154,7 +154,7 @@
       </div>
       <!-- Input landline -->
       <div class="mb-3">
-        <label for="landline" class="fs-5 fw-bold">Número de teléfono</label>
+        <label for="landline" class="fs-5 fw-bold">Número de teléfono fijo</label>
         <input
           type="text"
           class="form-control"
@@ -176,9 +176,11 @@
       </div>
       <!-- Input date birth -->
       <div class="mb-3">
-        <label for="datebirth" class="fs-5 fw-bold">Fceha de nacieminto</label>
+        <label for="datebirth" class="fs-5 fw-bold">Fecha de nacimiento</label>
         <input
           type="date"
+          min="1942-01-01"
+          max="2004-12-31"
           class="form-control"
           id="datebirth"
           placeholder="Digite su fceha de nacieminto"
@@ -265,7 +267,7 @@
           [(ngModel)]="user.affiliationregime"
         >
           <option value="Subsidiado">Subsidiado</option>
-          <option value="Conttributivo">Conttributivo</option>
+          <option value="Conttributivo">Contributivo</option>
         </select>
       </div>
       <!-- Select sex -->
