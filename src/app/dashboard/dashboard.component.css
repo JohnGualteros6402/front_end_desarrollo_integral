@@ -5,3 +5,6 @@
 .darkmode h2{
   background-color: transparent !important;
 }
+.dataTables_filter{
+  background-color: aqua !important;
+}

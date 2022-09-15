@@ -1,35 +1,68 @@
-<div class="vw-100 vh-100">
-  <div class="container py-5">
-    <div class="text-end fw-bold ">
-      {{ email }}
+<div class="container-forum">
+  <header
+    class="d-flex justify-content-between p-2 border-bottom border-primary"
+  >
+    <div class="d-flex align-items-center">
+      <input type="text" class="form-control" placeholder="Buscar..." />
+      <button class="btn btn-blue-king ms-2">Envíar</button>
     </div>
-    <!-- Container Question -->
-    <div class="rounded mt-5 col-6  m-auto border">
-      <!-- Header question -->
-      <div class="d-flex justify-content-between bg-blue-king text-light">
-        <p class="fw-bold mt-3 ms-2">
-          Administrador
-        </p>
-        <div class="me-2">
-          <span>12-05-2022 / 25-05-2022</span>
-          <p class="text-center fw-bold">Ambiental</p>
+    <p class="fw-bold">{{ email }}</p>
+  </header>
+  <div class="row container-questions">
+    <div class="col-md-6 border px-5 py-2">
+      <table class="w-100 table" id="datat" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead>
+          <tr>
+            <th class="text-center">
+              gyewgfew
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngIf="questions.length > 0" class="border w-100">
+          <tr
+            *ngFor="let question of questions"
+            class="border rounded w-100 p-5 text-center"
+            id="card-question"
+            (click)="getQuestionAndRedirect(question.idquestion)"
+          >
+            <h5>Admin</h5>
+            <p>
+              <span class="text-blue-king">Creación :</span
+              >{{ question.openingdate }}<br />
+              <span class="text-blue-king">Cierre :</span
+              >{{ question.closingdate }}
+            </p>
+            <p>{{ question.statement }}</p>
+          </tr>
+        </tbody>
+        <!-- validate if questions has a length equals to 0 -->
+        <tbody *ngIf="questions.length == 0">
+          <h1>Aún no hay preguntas</h1>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6 p-5">
+      <!-- validate if question is different of null -->
+      <div class="border rounded p-3" *ngIf="question != null">
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="fw-bold fs-5">Admin</p>
+          <p>
+            <span class="text-blue-king">Creación :</span
+            >{{ question.openingdate }}<br />
+            <span class="text-blue-king">Cierre :</span
+            >{{ question.closingdate }}
+          </p>
         </div>
+        <p>{{ question.statement }}</p>
+        <form class="mt-5">
+          <textarea name="response" id="response" class="form-control" rows="5"></textarea>
+          <button class="btn btn-blue-king w-100 mt-2 fw-bold">Guardar Respuesta</button>
+        </form>
       </div>
-      <!-- Content Question -->
-      <div class="pt-3 px-3">
-        como podemos invertir el dinero para ayudar al medio ambiente
-      </div>
-      <form>
-        <textarea name="response" id="response" class="form-control mt-5"></textarea>
-        <button class="btn btn-dark text-light mt-3 fw-bold">Guardar Respuesta</button>
-      </form>
-      <div class="bg-light border border-blue-king m-2 rounded shadow">
-        <div class="text-end fw-bold bg-blue-king text-light p-2 rounded">
-          {{ email }}
-        </div>
-        <div class="text-center fw-bold  py-2">
-          pienso que no se nada
-        </div>
+      <div class="border rounded" *ngIf="question == null">
+        <h1 class="text-center">
+          Selecciona una pregunta para responderla
+        </h1>
       </div>
     </div>
   </div>
