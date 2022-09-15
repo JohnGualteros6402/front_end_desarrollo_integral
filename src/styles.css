@@ -182,7 +182,9 @@ body .container_login{
 .card:hover {
   height: 450px;
 }
-
+.form-select{
+  padding: 0 25px !important;
+}
 .imgBx {
   position: absolute;
   left: 50%;

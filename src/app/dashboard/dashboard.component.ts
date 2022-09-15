@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../classes/user';
 import { UserService } from '../services/user.service';
 import Swal from 'sweetalert2'
 import { QuestionService } from '../services/question.service';
 import { Question } from '../classes/question';
+import {Subject} from 'rxjs';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   // Variables
   tableUsersHeaders: string[] = [
@@ -39,13 +41,21 @@ export class DashboardComponent implements OnInit {
   isDark: boolean = false;
   questions:Question[];
   numberofquestions:number;
+  emailSession: string | null = null;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
   constructor(private questionService: QuestionService,private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
     this.validateIsAuthenticated();
     this.getQuestions();
     this.getUsers();
+    this.getEmailSession();
     console.log(this.users);
+  }
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
   }
 
   // Button Events
@@ -64,14 +74,19 @@ export class DashboardComponent implements OnInit {
       console.log(this.numberofquestions);
     })
   }
+  getEmailSession(){
+    this.emailSession = localStorage.getItem('email');
+  }
   private getUsers(){
     this.userService.getListUsers().subscribe(data=>{
       this.users = data;
+      this.dtTrigger.next(this.users);
     })
   }
   logout(){
     if(localStorage.getItem('isAuthenticated')){
       localStorage.removeItem('isAuthenticated')
+      localStorage.removeItem('email')
       this.router.navigate(['home']);
     }
   }
@@ -81,6 +96,7 @@ export class DashboardComponent implements OnInit {
     }
     return this.router.navigate(['login']);
   }
+
   deleteUser(id:number){
     Swal.fire({
       title: 'Estas seguro de eliminar al usuario?',
@@ -120,6 +136,6 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
-  
+
 
 }

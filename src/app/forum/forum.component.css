@@ -1,0 +1,18 @@
+.container-forum{
+  height: 100vh;
+}
+.container-forum header{
+  height: 5vh;
+}
+.container-forum .container-questions{
+  min-height: 95vh;
+  height: auto;
+}
+#card-question  {
+  transition-duration: .5s;
+  cursor: pointer;
+}
+#card-question:hover  {
+  background-color: #f0f0f0;
+  transition-duration: .5s;
+}
