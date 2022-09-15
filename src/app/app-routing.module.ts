@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'createQuestion', component: CreateQuestionComponent},
   { path: 'forum', component: ForumComponent},
   { path: 'question', component: QuestionsComponent },
+  { path: 'forum/:id', component: ForumComponent},
   { path: '**', redirectTo: 'home' }
 ];
 

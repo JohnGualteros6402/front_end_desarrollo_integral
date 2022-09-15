@@ -16,6 +16,7 @@ import { RegisterThemeComponent } from './register-theme/register-theme.componen
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { ForumComponent } from './forum/forum.component';
 import { QuestionsComponent } from './questions/questions.component';
+import {DataTablesModule} from 'angular-datatables';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTablesModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
