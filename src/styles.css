@@ -31,6 +31,9 @@ body .navbar{
  transition: all 1s linear;
 
 }
+body input{
+  color: #141414 !important;
+}
 body .content_dashboard{
   background-color: var(--light-gray);
  transition: all 1s linear;
@@ -67,6 +70,9 @@ body #user_dashboard{
 .darkmode .header{
   background-color: var(--dark-blue);
  transition: all 1s linear;
+}
+.darkmode input{
+  color: rgb(255, 255, 255) !important;
 }
 .darkmode .section_content_dashboard{
   background-color: var(--dark-blue);
