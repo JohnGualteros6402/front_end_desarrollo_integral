@@ -1181,6 +1181,7 @@ export class RegisterUserComponent implements OnInit {
     "Caucásica",
     "Mongoloide",
     "Australoide",
-    "Capoide"
+    "Capoide",
+    "Ninguna"
   ]
 }
