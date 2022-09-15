@@ -1,3 +1,11 @@
 .margin-200{
-  margin-top: 200px;
+  margin: 400px 0 0 130px;
+}
+
+.margin-300{
+  margin-left: 110px;
+}
+
+.margin-400{
+  margin-left: 130px;
 }
