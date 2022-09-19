@@ -1,68 +1,51 @@
-<div
-  class="vw-100 vh-100 bg-gray-light d-flex justify-content-center align-items-center"
-  id="container_register_theme"
->
-<div
-class="vw-100 vh-100 bg-gray-light d-flex justify-content-center align-items-center"
-id="container_register_theme"
->
-<div class="bg-light rounded shadow p-5">
-  <h1 class="text-center text-blue-king fw-bold display-5">Registrar Pregunta</h1>
-  <form (ngSubmit)="onSubmit()" #questionForm="ngForm" method="post">
-      <div class="mb-3">
-        <label for="" class="form-label">Tema Sondeo:</label>
-        <select class="form-control" [(ngModel)]="idSurvey"  name="surkey_id" id="surkey_id" >
-          <option *ngFor="let survey of surveys; index"   value="{{survey.idsurvey}}" >{{ survey.theme }}</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="" class="form-label">Fecha de inicio</label>
-        <input type="date" name="openingDate" id="openingDate" [(ngModel)]="question.openingdate" class="form-control" placeholder="" aria-describedby="helpId">
-      </div>
-      <div class="mb-3">
-        <label for="" class="form-label">Fecha de Cierre</label>
-        <input type="date" name="closingdate" id="closingdate"  [(ngModel)]="question.closingdate" class="form-control" placeholder="" aria-describedby="helpId">
-      </div>
-      <div class="mb-3">
-        <label for="" class="form-label">Estado:</label>
-        <select class="form-select form-select-lg mb-3" name="state"
-        id="state" [(ngModel)]="question.state" aria-label=".form-select-lg example">
-          <option selected>Seleccionar</option>
-          <option value="true">Activo</option>
-          <option value="false">Inactivo</option>
-        </select>
-      </div>
+<div class="vw-100 vh-100 bg-gray-light d-flex justify-content-center align-items-center" id="container_register_theme">
+  <div class="vw-100 vh-100 bg-gray-light d-flex justify-content-center align-items-center"
+    id="container_register_theme">
+    <div class="bg-light rounded shadow p-5">
+      <h1 class="text-center text-blue-king fw-bold display-5">Registrar Pregunta</h1>
+      <form (ngSubmit)="onSubmit()" #questionForm="ngForm" method="post">
+        <div class="mb-3">
+          <p>{{question.survey}}</p>
+          <label for="" class="form-label">Tema Sondeo:</label>
+          <select class="form-control" [(ngModel)]="question.survey" name="suervey_id" id="suervey_id">
+            <option *ngFor="let survey of surveys; index" value="{{survey.idsurvey}}">{{ survey.theme }}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Fecha de inicio</label>
+          <input type="date" name="openingDate" id="openingDate" [(ngModel)]="question.openingdate" class="form-control"
+            placeholder="" aria-describedby="helpId">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Fecha de Cierre</label>
+          <input type="date" name="closingdate" id="closingdate" [(ngModel)]="question.closingdate" class="form-control"
+            placeholder="" aria-describedby="helpId">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Estado:</label>
+          <select class="form-select form-select-lg mb-3" name="state" id="state" [(ngModel)]="question.state"
+            aria-label=".form-select-lg example">
+            <option selected>Seleccionar</option>
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+          </select>
+        </div>
 
-    <!-- Input number document -->
-    <div class="mb-3 mt-5">
-      <label for="theme" class="fs-5 fw-bold my-2">desccripción pregunta</label>
-      <textarea
-        type="text"
-        class="form-control"
-        id="theme"
-        placeholder="Digite el nombre del tema"
-        [(ngModel)]="question.statement"
-        name="theme"
-        required
-        #theme="ngModel"
-      >
+        <!-- Input number document -->
+        <div class="mb-3 mt-5">
+          <label for="theme" class="fs-5 fw-bold my-2">desccripción pregunta</label>
+          <textarea type="text" class="form-control" id="theme" placeholder="Digite el nombre del tema"
+            [(ngModel)]="question.statement" name="theme" required #theme="ngModel">
       </textarea>
-      <div
-        class="text-danger"
-        *ngIf="theme.invalid && (theme.dirty || theme.touched)"
-      >
-        <div *ngIf="theme.errors?.['required']">El tema es obligatorio</div>
-      </div>
+          <div class="text-danger" *ngIf="theme.invalid && (theme.dirty || theme.touched)">
+            <div *ngIf="theme.errors?.['required']">El tema es obligatorio</div>
+          </div>
+        </div>
+        <button class="btn btn-blue-king w-100 fw-bold rounded shadow-sm my-5 fs-5 py-2" id="btnLogin"
+          [disabled]="questionForm.invalid">
+          Crear Pregunta
+        </button>
+      </form>
+      <a routerLink="/dashboard" class="text-center fw-bold">Volver atras</a>
     </div>
-    <button
-      class="btn btn-blue-king w-100 fw-bold rounded shadow-sm my-5 fs-5 py-2"
-      id="btnLogin"
-      [disabled]="questionForm.invalid"
-    >
-      Crear Pregunta
-    </button>
-  </form>
-  <a routerLink="/dashboard" class="text-center fw-bold">Volver atras</a>
-</div>
-</div>
-
+  </div>
