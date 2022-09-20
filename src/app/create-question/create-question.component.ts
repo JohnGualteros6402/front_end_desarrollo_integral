@@ -56,16 +56,14 @@ export class CreateQuestionComponent implements OnInit {
       this.surveyObject.theme = data['theme'];
       this.surveyObject.status = data['status'];
     });
-    console.log(this.question);
     this.question.survey = this.surveyObject;
-    console.log(this.surveyObject);
     this.saveQuestion();
   }
 
   getSurvay() {
     this.surveyService.getListSurveys().subscribe((data) => {
       this.surveys = data;
-      console.log(this.surveys);
+      // console.log(this.surveys);
     });
   }
 }

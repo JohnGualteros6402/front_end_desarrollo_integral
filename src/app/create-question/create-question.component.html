@@ -7,7 +7,7 @@
         <div class="mb-3">
           <p>{{question.survey}}</p>
           <label for="" class="form-label">Tema Sondeo:</label>
-          <select class="form-control" [(ngModel)]="question.survey" name="suervey_id" id="suervey_id">
+          <select class="form-control" [(ngModel)]="idSurvey" name="suervey_id" id="suervey_id">
             <option *ngFor="let survey of surveys; index" value="{{survey.idsurvey}}">{{ survey.theme }}</option>
           </select>
         </div>
