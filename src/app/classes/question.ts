@@ -1,4 +1,4 @@
-import { Survey } from "./survey";
+import { Survey } from './survey';
 
 export class Question {
   idquestion: number;
@@ -6,5 +6,5 @@ export class Question {
   openingdate: string;
   closingdate: string;
   state: boolean;
-  surkey_id: Survey;
+  survey: Survey;
 }

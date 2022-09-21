@@ -16,7 +16,7 @@ export class UserService {
     return this.httpClient.get<User[]>(`${this.baseURL}`);
   }
   findInformationUsers(email: string): Observable<User> {
-    return this.httpClient.get<User>(`${this.baseURL}/validation/${email}`);
+    return this.httpClient.get<User>(`${this.baseURL}/information/${email}`);
   }
 
   updateUser(id:number,user:User) : Observable<Object>{

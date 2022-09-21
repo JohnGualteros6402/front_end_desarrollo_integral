@@ -86,6 +86,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   logout(){
     if(localStorage.getItem('isAuthenticated')){
       localStorage.removeItem('isAuthenticated')
+      localStorage.removeItem('rol')
       localStorage.removeItem('email')
       this.router.navigate(['home']);
     }
