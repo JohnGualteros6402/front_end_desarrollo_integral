@@ -17,6 +17,7 @@ import { CreateQuestionComponent } from './create-question/create-question.compo
 import { ForumComponent } from './forum/forum.component';
 import { QuestionsComponent } from './questions/questions.component';
 import {DataTablesModule} from 'angular-datatables';
+import { DashboardAdminModule } from './dashboard-admin/dashboard-admin.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    DashboardAdminModule,
     DataTablesModule,
     TranslateModule.forRoot({
       loader: {

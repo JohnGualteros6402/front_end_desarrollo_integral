@@ -4,6 +4,14 @@
   --dark-gray: #1c2039;
   --light-gray: #e7e6e6;
   --light: #fff;
+  --header-height: 3rem;
+  --nav-width: 68px;
+  --first-color: #4723d9;
+  --first-color-light: #afa5d9;
+  --white-color: #f7f6fb;
+  --body-font: "Nunito", sans-serif;
+  --normal-font-size: 1rem;
+  --z-fixed: 100;
 }
 
 * {
@@ -377,9 +385,6 @@ body .container_login{
   .section_content_dashboard, .estadistic{
     width: 100%;
   }
-  body{
-    background-color: #3aec64;
-  }
 }
 
 @media (max-width: 1024px) {
@@ -422,3 +427,5 @@ body .container_login{
   background-color: #fff;
   padding: 80px;
 }
+
+

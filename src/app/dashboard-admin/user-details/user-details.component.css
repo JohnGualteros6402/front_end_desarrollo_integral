@@ -1,0 +1,13 @@
+.container-table{
+  width: 80%;
+  margin: 20px auto;
+  height: auto;
+  min-height: 80%;
+  padding: 100px 0;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgb(241, 241, 241);
+}
+h1{
+  margin-top:300px;
+}

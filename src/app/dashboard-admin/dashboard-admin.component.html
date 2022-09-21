@@ -1,0 +1,41 @@
+<header class="header-dash" id="header">
+  <div class="header_toggle">
+    <i class="fa-solid fa-bars" id="header-toggle"></i>
+  </div>
+  {{ emailSession }}
+  <div class="header_img">
+    <img src="https://i.imgur.com/hczKIze.jpg" alt="" />
+  </div>
+</header>
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+    <div>
+      <a href="/admin" class="nav_logo">
+        <i class="fa-brands fa-quora nav_logo-icon"></i>
+        <span class="nav_logo-name">Quorum</span>
+      </a>
+      <div class="nav_list">
+        <a routerLink="/admin" class="nav_link active">
+          <i class="fa-solid fa-users nav_icon"></i>
+          <span class="nav_name">Usuarios</span>
+        </a>
+        <a href="#" class="nav_link">
+          <i class="fa-solid fa-book nav_icon"></i>
+          <span class="nav_name">Temas</span>
+        </a>
+        <a href="#" class="nav_link">
+          <i class="fa-solid fa-question nav_icon"></i>
+          <span class="nav_name">Preguntas</span>
+        </a>
+        <a href="#" class="nav_link">
+          <i class="fa-sharp fa-solid fa-chart-simple nav_icon"></i>
+          <span class="nav_name">Estadísticas</span>
+        </a>
+      </div>
+    </div>
+    <a (click)="logout()" class="nav_link">
+      <i class="fa-solid fa-arrow-right-from-bracket nav_icon"></i>
+      <span class="nav_name">Cerrar Sesión</span>
+    </a>
+  </nav>
+</div>

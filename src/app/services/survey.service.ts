@@ -8,7 +8,7 @@ import { Survey } from '../classes/survey';
 })
 export class SurveyService {
 
-  private baseURL = "http://localhost:8081/api/v1/survey";
+  private baseURL = "http://localhost:8090/api/v1/survey";
 
   constructor(private httpClient: HttpClient) {}
 
