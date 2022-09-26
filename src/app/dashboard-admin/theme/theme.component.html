@@ -1,0 +1,40 @@
+<app-dashboard-admin></app-dashboard-admin>
+<!--Container Main start-->
+<div class="vh-100 bg-light d-flex align-items-center py-3">
+  <div class="container-table p-5">
+    <div class="alert alert-blue-king m-2" role="alert" *ngIf="surveys.length == 0">
+      Aún no hay usuarios registrados
+    </div>
+    <div class="w-100 d-flex">
+      <button class="btn btn-blue-dark my-3 fw-bold"> <i class="fa-solid fa-file"></i> Generar Reporte</button>
+      <button class="btn btn-blue-dark my-3 fw-bold"> <i class="fa-solid fa-file"></i> Generar Reporte</button>
+    </div>
+    <table class="table" datatable [dtOptions]="dtOptions">
+      <thead class="text-center bg-blue-dark text-light fw-bold">
+        <tr>
+          <th class="text-center">id</th>
+          <th class="text-center">Nombre tema</th>
+          <th class="text-center">Estado del Tema</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let survey of surveys">
+          <td>{{ survey.idsurvey }}</td>
+          <td>{{ survey.theme }}</td>
+          <td [class]="survey.status == true ? 'text-green fw-bold' : 'text-danger fw-bold'">
+            {{ survey.status == true ? 'Activo' : 'Inactivo' }}
+          </td>
+          <td>
+            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="survey.status == false" (click)="enableSurvey(survey.idsurvey)">
+              Activar
+            </button>
+            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="survey.status == true" (click)="disableSurvey(survey.idsurvey)">
+              Inactivar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

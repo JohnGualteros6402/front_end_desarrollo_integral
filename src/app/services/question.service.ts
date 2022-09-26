@@ -7,12 +7,8 @@ import { Question } from '../classes/question';
   providedIn: 'root',
 })
 export class QuestionService {
-<<<<<<< HEAD
 
   private baseURL = "http://localhost:8090/api/v1/question";
-=======
-  private baseURL = 'http://localhost:8081/api/v1/question';
->>>>>>> 8c0f3bc75b08200ec6aa80903bc4de40728f1a3b
 
   constructor(private httpClient: HttpClient) {}
 

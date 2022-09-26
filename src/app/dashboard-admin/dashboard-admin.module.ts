@@ -7,13 +7,17 @@ import { DashboardAdminComponent } from './dashboard-admin.component';
 import { DataTablesModule } from 'angular-datatables';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { ThemeComponent } from './theme/theme.component';
+import { RegisterThemeComponent } from './register-theme/register-theme.component';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
     DashboardAdminComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    ThemeComponent,
+    RegisterThemeComponent
   ],
   imports: [
     CommonModule,
