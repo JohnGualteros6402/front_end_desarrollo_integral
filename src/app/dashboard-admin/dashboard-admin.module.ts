@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { DashboardAdminRoutingModule } from './dashboard-admin-routing.module';
 import { UsersComponent } from './users/users.component';
 import { DashboardAdminComponent } from './dashboard-admin.component';
@@ -9,6 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { ThemeComponent } from './theme/theme.component';
 import { RegisterThemeComponent } from './register-theme/register-theme.component';
+import { QuestionsComponent } from './questions/questions.component';
+import { CreateQuestionComponent } from './create-question/create-question.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { RegisterThemeComponent } from './register-theme/register-theme.componen
     DashboardAdminComponent,
     UserDetailsComponent,
     ThemeComponent,
-    RegisterThemeComponent
+    RegisterThemeComponent,
+    QuestionsComponent,
+    CreateQuestionComponent,
+    StatisticsComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +31,7 @@ import { RegisterThemeComponent } from './register-theme/register-theme.componen
     DataTablesModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxChartsModule
   ],
   exports: [
     UsersComponent,

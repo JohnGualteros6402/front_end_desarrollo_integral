@@ -1,0 +1,46 @@
+<app-dashboard-admin></app-dashboard-admin>
+<!--Container Main start-->
+<div class="vh-100 bg-light d-flex align-items-center py-3">
+  <div class="container-table p-5">
+    <div class="alert alert-blue-king m-2" role="alert" *ngIf="questions.length == 0">
+      Aún no hay preguntas registradas
+    </div>
+    <div class="w-100 d-flex">
+      <button class="btn btn-blue-dark my-3 fw-bold"> <i class="fa-solid fa-file"></i> Generar Reporte</button>
+      <a (click)="openAlertConfirmation()" class="btn btn-blue-dark my-3 ms-2 fw-bold"> <i class="fa-solid fa-plus"></i> Agregar Pregunta</a>
+    </div>
+    <table class="table" datatable [dtOptions]="dtOptions">
+      <thead class="text-center bg-blue-dark text-light fw-bold">
+        <tr>
+          <th class="text-center">id</th>
+          <th class="text-center">Pregunta</th>
+          <th class="text-center">Fecha Apertura</th>
+          <th class="text-center">Fecha Cierre</th>
+          <th class="text-center">Tema</th>
+          <th class="text-center">Estado</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let question of questions">
+          <td>{{ question.idquestion }}</td>
+          <td>{{ question.statement }}</td>
+          <td>{{ question.openingdate }}</td>
+          <td>{{ question.closingdate }}</td>
+          <td>{{ question.survey.theme }}</td>
+          <td [class]="question.state == true ? 'text-success fw-bold' : 'text-danger fw-bold'">
+            {{ question.state == true ? 'Activo' : 'Inactivo' }}
+          </td>
+          <td>
+            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="question.state == false" (click)="enableQuestion(question.idquestion)">
+              Activar
+            </button>
+            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="question.state == true" (click)="disableQuestion(question.idquestion)">
+              Inactivar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

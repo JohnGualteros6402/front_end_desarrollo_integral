@@ -119,7 +119,7 @@ body .container_login{
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2acfb9;
+  background: #0051de;
 }
 
 #image-home {
@@ -427,5 +427,13 @@ body .container_login{
   background-color: #fff;
   padding: 80px;
 }
+.container-table{
+  width: 80%;
+  margin: 20px auto;
+  height: 80%;
+  border-radius: 10px;
+  background-color: rgb(241, 241, 241);
+}
+
 
 

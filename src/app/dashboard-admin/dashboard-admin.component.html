@@ -11,24 +11,26 @@
   <nav class="nav">
     <div>
       <a href="/admin" class="nav_logo">
-        <i class="fa-brands fa-quora nav_logo-icon"></i>
-        <span class="nav_logo-name">Quorum</span>
+        <img src="../../assets/logos/icon_black.png" alt="icon" width="20" class="nav_logo-icon">
+        <span class="nav_logo-name">
+          <img src="../../assets/logos/logo_eskrive_white.png" alt="logo" width="70">
+        </span>
       </a>
       <div class="nav_list">
-        <a routerLink="/admin" class="nav_link active">
+        <a routerLink="/admin" class="nav_link" >
           <i class="fa-solid fa-users nav_icon"></i>
           <span class="nav_name">Usuarios</span>
         </a>
-        <a [routerLink]="['/admin/themes']" class="nav_link">
+        <a [routerLink]="['/admin/themes']" class="nav_link" >
           <i class="fa-solid fa-book nav_icon"></i>
           <span class="nav_name">Temas</span>
         </a>
-        <a href="#" class="nav_link">
-          <i class="fa-solid fa-question nav_icon"></i>
+        <a routerLink="/admin/questions" class="nav_link">
+          <i class="fa-solid fa-question nav_icon" ></i>
           <span class="nav_name">Preguntas</span>
         </a>
-        <a href="#" class="nav_link">
-          <i class="fa-sharp fa-solid fa-chart-simple nav_icon"></i>
+        <a href="/admin/statistics" class="nav_link">
+          <i class="fa-sharp fa-solid fa-chart-simple nav_icon" ></i>
           <span class="nav_name">Estadísticas</span>
         </a>
       </div>

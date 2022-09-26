@@ -18,6 +18,7 @@ import { ForumComponent } from './forum/forum.component';
 import { QuestionsComponent } from './questions/questions.component';
 import {DataTablesModule} from 'angular-datatables';
 import { DashboardAdminModule } from './dashboard-admin/dashboard-admin.module';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -33,7 +34,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterThemeComponent,
     CreateQuestionComponent,
     ForumComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

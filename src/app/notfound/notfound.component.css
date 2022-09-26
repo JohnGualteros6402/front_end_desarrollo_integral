@@ -1,0 +1,16 @@
+.container-not-found{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+h1{
+  font-size: 10rem;
+  background-image: linear-gradient(to right, #111a49, #0051de, #0051de, #111a49);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  color: transparent;
+}

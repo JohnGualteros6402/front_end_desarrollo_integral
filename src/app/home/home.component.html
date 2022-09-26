@@ -1,9 +1,10 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md fixed-top pe-5">
   <div class="container-fluid">
-    <a class="navbar-brand fs-2 fw-bold text-blue-king" routerLink="/">
-      Quorum</a
-    >
+    <a class="navbar-brand pb-5" routerLink="/">
+      <img src="../../assets/logos/logo_eskrive_black.png" alt="LOGO" width="90" *ngIf="!isDark">
+      <img src="../../assets/logos/logo_eskrive_white.png" alt="LOGO" width="90" *ngIf="isDark">
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -211,7 +212,10 @@
 <!-- Footer -->
 <footer class="container" id="contact">
   <div class="d-flex justify-content-between align-items-center">
-    <h2 class="fs-3 text-blue-king fw-bold">Quorum</h2>
+    <h2 class="fs-3 text-blue-king fw-bold bg-transparent">
+      <img src="../../assets/logos/logo_eskrive_black.png" alt="LOGO" width="90" *ngIf="!isDark">
+      <img src="../../assets/logos/logo_eskrive_white.png" alt="LOGO" width="90" *ngIf="isDark">
+    </h2>
     <div>
       <img
         src="../assets/icons-template/icons/twitter.svg"

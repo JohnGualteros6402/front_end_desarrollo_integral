@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { RegisterThemeComponent } from './register-theme/register-theme.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'forum', component: ForumComponent},
   { path: 'question', component: QuestionsComponent },
   { path: 'forum/:id', component: ForumComponent},
-  { path: '**', redirectTo: 'home' }
+  { path: 'notfound', component: NotfoundComponent },
+  { path: '**', redirectTo: 'notfound' }
 ];
 
 @NgModule({

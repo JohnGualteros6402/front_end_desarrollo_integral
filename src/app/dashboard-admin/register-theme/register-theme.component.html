@@ -1,1 +1,53 @@
-<p>register-theme works!</p>
+<app-dashboard-admin></app-dashboard-admin>
+<!--Container Main start-->
+<div class="vh-100 bg-light d-flex align-items-center py-3">
+  <div class="container-table p-5">
+    <div class="bg-light rounded shadow p-5">
+      <a routerLink="/admin/themes" class="text-blue-kink fw-bold"> <i class="fa-solid fa-arrow-left me-2"></i>Volver Atrás</a>
+      <h1 class="text-center text-blue-dark fw-bold fs-1">Registrar Tema</h1>
+      <form (ngSubmit)="onSubmit()" #surveyForm="ngForm" method="post" class="px-5">
+        <!-- Input number document -->
+        <div class="mb-3 mt-5">
+          <label for="theme" class="fs-5 fw-bold my-2">Nombre del Tema</label>
+          <input
+            type="text"
+            class="form-control"
+            id="theme"
+            placeholder="Digite el nombre del tema"
+            [(ngModel)]="survey.theme"
+            name="theme"
+            required
+            minlength="5"
+            #theme="ngModel"
+          />
+          <div
+            class="text-danger"
+            *ngIf="theme.invalid && (theme.dirty || theme.touched)"
+          >
+            <div *ngIf="theme.errors?.['required']">El tema es obligatorio</div>
+            <div *ngIf="theme.errors?.['minlength']">
+              El tema debe tener al menos 5 caracteres
+            </div>
+          </div>
+        </div>
+        <button
+          class="btn btn-blue-dark w-100 fw-bold rounded shadow-sm my-5 fs-5 py-2"
+          id="btnLogin"
+          [disabled]="surveyForm.invalid"
+        >
+          Crear Tema
+        </button>
+        <div class="alert alert-blue-dark" role="alert" *ngIf="loading == true">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="spinner-border text-primary mr-3" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="ms-2">
+              <strong>Guardando Tema</strong>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

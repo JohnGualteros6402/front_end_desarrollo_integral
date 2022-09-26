@@ -7,7 +7,7 @@
     </div>
     <div class="w-100 d-flex">
       <button class="btn btn-blue-dark my-3 fw-bold"> <i class="fa-solid fa-file"></i> Generar Reporte</button>
-      <button class="btn btn-blue-dark my-3 fw-bold"> <i class="fa-solid fa-file"></i> Generar Reporte</button>
+      <a (click)="openAlertConfirmation()" class="btn btn-blue-dark my-3 ms-2 fw-bold"> <i class="fa-solid fa-plus"></i> Agregar Tema</a>
     </div>
     <table class="table" datatable [dtOptions]="dtOptions">
       <thead class="text-center bg-blue-dark text-light fw-bold">
@@ -22,7 +22,7 @@
         <tr *ngFor="let survey of surveys">
           <td>{{ survey.idsurvey }}</td>
           <td>{{ survey.theme }}</td>
-          <td [class]="survey.status == true ? 'text-green fw-bold' : 'text-danger fw-bold'">
+          <td [class]="survey.status == true ? 'text-success fw-bold' : 'text-danger fw-bold'">
             {{ survey.status == true ? 'Activo' : 'Inactivo' }}
           </td>
           <td>

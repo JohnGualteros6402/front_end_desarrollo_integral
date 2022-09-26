@@ -2,23 +2,23 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
-import { Survey } from 'src/app/classes/survey';
-import { SurveyService } from 'src/app/services/survey.service';
+import { Question } from 'src/app/classes/question';
+import { QuestionService } from 'src/app/services/question.service';
 
 @Component({
-  selector: 'app-theme',
-  templateUrl: './theme.component.html',
-  styleUrls: ['./theme.component.css'],
+  selector: 'app-questions',
+  templateUrl: './questions.component.html',
+  styleUrls: ['./questions.component.css']
 })
-export class ThemeComponent implements OnInit, OnDestroy {
+export class QuestionsComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
-  surveys: Survey[];
+  questions: Question[];
 
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger = new Subject<void>();
 
-  constructor(private surveyService: SurveyService, private router: Router) {}
+  constructor(private questionService: QuestionService, private router: Router) {}
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -28,12 +28,12 @@ export class ThemeComponent implements OnInit, OnDestroy {
         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json',
       },
     };
-    this.getSurveys();
+    this.getQuestions();
   }
 
-  private getSurveys() {
-    this.surveyService.getListSurveys().subscribe((data) => {
-      this.surveys = data;
+  private getQuestions() {
+    this.questionService.getListQuestions().subscribe((data) => {
+      this.questions = data;
       this.dtTrigger.next();
     });
   }
@@ -41,9 +41,9 @@ export class ThemeComponent implements OnInit, OnDestroy {
     this.dtTrigger.unsubscribe();
   }
 
-  enableSurvey(id: number) {
+  enableQuestion(id: number) {
     Swal.fire({
-      title: 'Estas seguro de activar el tema?',
+      title: 'Estas seguro de activar la pregunta?',
       text: 'No podrás revertir esto!',
       icon: 'warning',
       showCancelButton: true,
@@ -53,20 +53,20 @@ export class ThemeComponent implements OnInit, OnDestroy {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.surveyService.deleteSurvey(id).subscribe((data) => {
-          this.getSurveys();
+        this.questionService.deleteQuestion(id).subscribe((data) => {
+          this.getQuestions();
           Swal.fire(
             'Activado!',
-            'el tema ah sido activado satsifactoriamente.',
+            'la pregunta ah sido activada satsifactoriamente.',
             'success'
           );
         });
       }
     });
   }
-  disableSurvey(id: number) {
+  disableQuestion(id: number) {
     Swal.fire({
-      title: 'Estas seguro de inactivar el tema?',
+      title: 'Estas seguro de inactivar la pregunta?',
       text: 'No podrás revertir esto!',
       icon: 'warning',
       showCancelButton: true,
@@ -76,11 +76,11 @@ export class ThemeComponent implements OnInit, OnDestroy {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.surveyService.deleteSurvey(id).subscribe((data) => {
-          this.getSurveys();
+        this.questionService.deleteQuestion(id).subscribe((data) => {
+          this.getQuestions();
           Swal.fire(
             'Inactivado!',
-            'el tema ah sido inactivado satsifactoriamente.',
+            'la pregunta ah sido inactivada satsifactoriamente.',
             'success'
           );
         });
@@ -89,7 +89,7 @@ export class ThemeComponent implements OnInit, OnDestroy {
   }
   openAlertConfirmation() {
     Swal.fire({
-      title: 'Estas seguro que quieres crear un tema?',
+      title: 'Estas seguro que quieres crear una Pregunta?',
       text: 'Serás redirigido al formulario!',
       icon: 'warning',
       showCancelButton: true,
@@ -101,9 +101,9 @@ export class ThemeComponent implements OnInit, OnDestroy {
       if (result.isConfirmed) {
           Swal.fire(
             'Redireccionando!',
-            'podrás crear el tema en un momento.',
+            'podrás crear la pregunta en un momento.',
             'success'
-          ).then(res=>this.router.navigate(['/admin/registerTheme']))
+          ).then(res=>this.router.navigate(['/admin/registerQuestion']))
       }
     });
   }
