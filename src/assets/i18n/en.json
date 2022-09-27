@@ -21,10 +21,11 @@
   "title_login": "Sign In",
   "label_email": "Email",
   "label_password": "Password",
-  "login_button": "Login",
+  "login_button": "Into",
   "text_login_1": "If you wanna go back Please",
   "text_redirect": "Click Here",
   "text_login_2": "You not are register ?",
+  "text_regist": "Create Account",
 
   "register_title": "Register",
   "register_label_name": "Name",

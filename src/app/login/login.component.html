@@ -3,13 +3,23 @@
     <img
       src="../../assets/img/imageLogin.jpg"
       class="w-100 h-100"
-    />
-  </div>
-  <div
+      />
+    </div>
+    <div
     class="col-md-7 d-flex justify-content-center align-items-center flex-column"
   >
     <form class="w-75" id="formLogin" #employeeForm="ngForm">
-      <div class="w-100 d-flex justify-content-end align-items-center">
+      <div class="w-100 d-flex justify-content-between align-items-center">
+        <div>
+          <a class="navbar-brand" routerLink="/home">
+            <img src="../../assets/logos/logo_eskrive_black.png" alt="LOGO" width="110" *ngIf="!isDark">
+            <img src="../../assets/logos/logo_eskrive_white.png" alt="LOGO" width="110" *ngIf="isDark">
+          </a>
+        </div>
+        <div
+          id="flags"
+          class="d-flex justify-content-center align-items-center pt-4"
+        >
         <button
           class="nav-link fw-bold bg-transparent border-0 mb-3"
           id="icon_mode"
@@ -17,10 +27,6 @@
           [(ngModel)]="buttonMode"
           [innerHTML]="!isDark ? iconMoon : iconSun"
         ></button>
-        <div
-          id="flags"
-          class="d-flex justify-content-center align-items-center"
-        >
           <p class="nav-link" (click)="changeLanguage('es')">
             <img src="../../assets/img/españa.png" alt="españa" width="20" />
           </p>
@@ -114,23 +120,14 @@
       </button>
     </form>
     <p class="text-center">
-      <span class="text-center mt-5">
-        {{ "text_login_1" | translate }}
-      </span>
-
-      <span
-        ><a routerLink="/home" class="text-blue-king fw-bold">
-          {{ "text_redirect" | translate }}
-        </a></span
-      ><br />
-
+      
       <span>
         {{ "text_login_2" | translate }}
       </span>
 
       <span
         ><a routerLink="/registerUser" class="text-blue-king fw-bold">
-          {{ "text_redirect" | translate }}
+          {{ "text_regist" | translate }}
         </a></span
       >
     </p>
