@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SurveyService } from 'src/app/services/survey.service';
 import { LegendPosition } from '@swimlane/ngx-charts';
 import { Survey } from 'src/app/classes/survey';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/classes/user';
+import { Question } from 'src/app/classes/question';
+import { QuestionService } from 'src/app/services/question.service';
 
 @Component({
   selector: 'app-statistics',
@@ -11,8 +12,8 @@ import { User } from 'src/app/classes/user';
   styleUrls: ['./statistics.component.css'],
 })
 export class StatisticsComponent implements OnInit {
-  multi: any[] = [];
-  view: [number, number] = [700, 300];
+  multi: any[];
+  view: [number, number] = [800, 300];
 
   // options
   gradient: boolean = true;
@@ -22,37 +23,48 @@ export class StatisticsComponent implements OnInit {
 
   response: Survey[];
   users: User[];
+  questions: Question[];
+  adminLength: number = 0;
+  clientLength: number = 0;
 
   constructor(
-    private surveyService: SurveyService,
-    private userService: UserService
+    private userService: UserService,
+    private questionService: QuestionService
   ) {}
 
   ngOnInit(): void {
-    this.getSurveys();
     this.getUsers();
-    console.log(this.multi)
-    // console.log(this.users.length);
-    console.log(this.users);
   }
-
-  private getSurveys() {
-    this.surveyService.getListSurveys().subscribe((data) => {
-      this.response = data;
-    });
-  }
+  
   private getUsers() {
     this.userService.getListUsers().subscribe((data) => {
       this.users = data;
-      // this.users.map(user=>{
-      //   this.multi.push({
-      //     name: "admin",
-      //     value: 20
-      //   })
-      // })
+      this.showTotalLengthWithRole(this.users);
     });
   }
+  showTotalLengthWithRole(users: User[]){
+    users.map((user) => {
+      if(user.role === 'ADMIN'){
+        this.adminLength += 1;
+      } else if(user.role === 'CITIZEN'){
+        this.clientLength += 1;
+      }
+    });
+    this.fillGraphPie(this.adminLength, this.clientLength);
+  }
 
+  fillGraphPie(totalAdminCount: number, totalClientCount: number) {
+    this.multi = [
+      {
+        name: 'Admin',
+        value: totalAdminCount,
+        },
+        {
+          name: 'Clientes',
+          value: totalClientCount,
+        }
+    ];;
+  }
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
