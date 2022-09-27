@@ -1,0 +1,15 @@
+.container-graphs{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 70% auto;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+#container-graph{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    place-content: center;
+}
