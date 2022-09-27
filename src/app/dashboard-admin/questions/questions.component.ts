@@ -41,7 +41,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.dtTrigger.unsubscribe();
   }
 
-  enableQuestion(id: number) {
+  enableQuestion(id: number, question: Question) {
     Swal.fire({
       title: 'Estas seguro de activar la pregunta?',
       text: 'No podrás revertir esto!',
@@ -53,7 +53,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.questionService.deleteQuestion(id).subscribe((data) => {
+        this.questionService.changeStatusQuestion(id, question).subscribe((data) => {
           this.getQuestions();
           Swal.fire(
             'Activado!',
@@ -64,7 +64,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       }
     });
   }
-  disableQuestion(id: number) {
+  disableQuestion(id: number, question: Question) {
     Swal.fire({
       title: 'Estas seguro de inactivar la pregunta?',
       text: 'No podrás revertir esto!',
@@ -76,7 +76,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.questionService.deleteQuestion(id).subscribe((data) => {
+        this.questionService.changeStatusQuestion(id, question).subscribe((data) => {
           this.getQuestions();
           Swal.fire(
             'Inactivado!',

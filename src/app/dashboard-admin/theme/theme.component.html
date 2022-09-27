@@ -26,10 +26,10 @@
             {{ survey.status == true ? 'Activo' : 'Inactivo' }}
           </td>
           <td>
-            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="survey.status == false" (click)="enableSurvey(survey.idsurvey)">
+            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="survey.status == false" (click)="enableSurvey(survey.idsurvey, survey)">
               Activar
             </button>
-            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="survey.status == true" (click)="disableSurvey(survey.idsurvey)">
+            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="survey.status == true" (click)="disableSurvey(survey.idsurvey, survey)">
               Inactivar
             </button>
           </td>

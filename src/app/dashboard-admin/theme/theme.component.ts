@@ -41,7 +41,7 @@ export class ThemeComponent implements OnInit, OnDestroy {
     this.dtTrigger.unsubscribe();
   }
 
-  enableSurvey(id: number) {
+  enableSurvey(id: number, survey: Survey) {
     Swal.fire({
       title: 'Estas seguro de activar el tema?',
       text: 'No podrás revertir esto!',
@@ -53,7 +53,7 @@ export class ThemeComponent implements OnInit, OnDestroy {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.surveyService.deleteSurvey(id).subscribe((data) => {
+        this.surveyService.changeStatusSurvey(id, survey).subscribe((data) => {
           this.getSurveys();
           Swal.fire(
             'Activado!',
@@ -64,7 +64,7 @@ export class ThemeComponent implements OnInit, OnDestroy {
       }
     });
   }
-  disableSurvey(id: number) {
+  disableSurvey(id: number, survey: Survey) {
     Swal.fire({
       title: 'Estas seguro de inactivar el tema?',
       text: 'No podrás revertir esto!',
@@ -76,7 +76,7 @@ export class ThemeComponent implements OnInit, OnDestroy {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.surveyService.deleteSurvey(id).subscribe((data) => {
+        this.surveyService.changeStatusSurvey(id, survey).subscribe((data) => {
           this.getSurveys();
           Swal.fire(
             'Inactivado!',

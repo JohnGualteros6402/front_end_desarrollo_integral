@@ -15,7 +15,7 @@ export class QuestionService {
   getListQuestions(): Observable<Question[]> {
     return this.httpClient.get<Question[]>(`${this.baseURL}`);
   }
-  updateQuestion(id: number, question: Question): Observable<Object> {
+  changeStatusQuestion(id:number, question:Question) : Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`, question);
   }
   getQuestionById(id: number): Observable<Question> {

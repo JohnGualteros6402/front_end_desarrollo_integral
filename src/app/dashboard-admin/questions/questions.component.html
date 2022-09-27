@@ -32,10 +32,10 @@
             {{ question.state == true ? 'Activo' : 'Inactivo' }}
           </td>
           <td>
-            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="question.state == false" (click)="enableQuestion(question.idquestion)">
+            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="question.state == false" (click)="enableQuestion(question.idquestion, question)">
               Activar
             </button>
-            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="question.state == true" (click)="disableQuestion(question.idquestion)">
+            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="question.state == true" (click)="disableQuestion(question.idquestion, question)">
               Inactivar
             </button>
           </td>
