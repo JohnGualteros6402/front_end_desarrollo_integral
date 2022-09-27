@@ -15,7 +15,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   questions: Question[];
 
   // We use this trigger because fetching the list of persons can be quite long,
-  // thus we ensure the data is fetched before rendering
+  // thus we ensure the data is fetched before renderin
   dtTrigger = new Subject<void>();
 
   constructor(private questionService: QuestionService, private router: Router) {}
