@@ -25,4 +25,5 @@ export class DashboardAdminComponent implements OnInit {
     localStorage.removeItem('isAuthenticated');
     this.router.navigate(['/login']);
   }
+  
 }
