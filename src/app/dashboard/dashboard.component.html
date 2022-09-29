@@ -1,127 +1,143 @@
-<div class="container_dashboard">
-  <div
-    class="header text-dark light-bg py-2 px-5 d-flex justify-content-between align-items-center"
-  >
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Skype_logo_%28fully_transparent%29.svg/2560px-Skype_logo_%28fully_transparent%29.svg.png"
-      alt="logo"
-      width="70"
-    />
-    <div class="d-flex justify-content-between align-items-center">
-      <button class="btn btn-blue-king fw-bold rounded" routerLink="/createQuestion">Crear nueva pregunta</button>
-      <button class="btn btn-blue-king fw-bold rounded m-2 " routerLink="/question">Listar Preguntas</button>
-      <p class="fs-5 fw-bold px-2 mt-3" id="user_dashboard">{{ emailSession }}</p>
-      <button
-          class="nav-link fw-bold bg-transparent border-0 mx-3"
-          id="icon_mode"
-          (click)="toggleDarkMode()"
-          [(ngModel)]="buttonMode"
-          [innerHTML]="!isDark ? iconMoon : iconSun"
-        ></button>
-    </div>
+<header class="header-dash" id="header">
+  <div class="header_toggle">
+    <i class="fa-solid fa-bars" id="header-toggle"></i>
   </div>
-
-  <div *ngFor="let user of users">
-    {{user.name}}
+  {{ emailSession }}
+  <div class="header_img">
+    <img src="https://i.imgur.com/hczKIze.jpg" alt="" />
   </div>
-  <div class="container_sections_dashboard">
-    <!-- Sidebar -->
-    <div
-      class="sidebar_dashboard light-bg d-flex flex-column justify-content-evenly align-items-center"
-    >
-      <a
-        href="../public/cards2.html"
-        class="fw-bold text-decoration-none text_mode_light"
-        id="icon_sidebar"
-      >
+</header>
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+    <div>
+      <a href="/dashboard" class="nav_logo">
         <img
-          src="../../assets/icons-template/icons/bxs-user-circle.svg"
-          width="30"
-          alt="user-photo"
+          src="../../assets/logos/icon_black.png"
+          alt="icon"
+          width="20"
+          class="nav_logo-icon"
         />
+        <span class="nav_logo-name">
+          <img
+            src="../../assets/logos/logo_eskrive_white.png"
+            alt="logo"
+            width="70"
+          />
+        </span>
       </a>
-      <a
-        class="fw-bold text-decoration-none text_mode_light"
-        id="icon_sidebar"
-        (click)="openAlertCreateThemeConfirm()"
-      >
-        <img
-          src="../../assets/icons-template/icons/plus-lg.svg"
-          width="30"
-          alt="settings-icon"
-        />
+      <div class="nav_list">
+        <a routerLink="/dashboard" class="nav_link">
+          <i class="fa-solid fa-home nav_icon"></i>
+          <span class="nav_name">Inicio</span>
+        </a>
+        <a class="nav_link" (click)="openModal(template)">
+          <i class="fa-solid fa-user nav_icon"></i>
+          <span class="nav_name">Perfil</span>
+        </a>
+
+      </div>
+    </div>
+    <a (click)="logout()" class="nav_link">
+      <i class="fa-solid fa-arrow-right-from-bracket nav_icon"></i>
+      <span class="nav_name">Cerrar Sesión</span>
     </a>
-      <a
-        class="fw-bold text-decoration-none text_mode_light"
-        id="icon_sidebar"
-      >
-        <img
-          src="../../assets/icons-template/icons/door-open.svg"
-          width="30"
-          alt="logout-icon"
-          (click)="logout()"
-        />
-      </a>
-    </div>
-    <!-- Container content dashboard -->
-    <div class="content_dashboard">
-      <div
-        class="section_content_dashboard estadistic d-flex justify-content-center align-items-center"
-        id="container_estadistic"
-      >
-        <h2 class="fw-bold text-center">
-          Número de preguntas en total hechas: {{numberofquestions}}
-        </h2>
-      </div>
-      <div
-        class="section_content_dashboard estadistic d-flex justify-content-center align-items-center"
-        id="container_estadistic"
-      >
-        <h2 class="fw-bold text-center">Número de respuestas en total: 16</h2>
-      </div>
+  </nav>
+</div>
 
-      <div class="section_content_dashboard table-responsive container_table">
-        <table class="table" id="datat" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
-          <thead>
-            <tr>
-              <th class="text-center" *ngFor="let title of tableUsersHeaders">
-                {{ title }}
-              </th>
-            </tr>
-          </thead>
-          <tbody class="text-center">
-            <tr *ngFor="let user of users">
-              <td>{{ user.numberdocument }}</td>
-              <td>{{ user.name }} - {{ user.lastname }}</td>
-              <td>{{ user.address }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{ user.numberphone }} - {{ user.landline }}</td>
-              <td>{{ user.datebirth }}</td>
-              <td>{{ user.municipality }}</td>
-              <td>{{ user.stratum }}</td>
-              <td>{{ user.academiclevel }}</td>
-              <td>{{ user.sex }}</td>
-              <td>{{ user.affiliationregime }}</td>
-              <td>{{ user.disabilitycondition }}</td>
-              <td>{{ user.ethnicity }}</td>
-              <td>{{ user.technologicalaccess }}</td>
-              <td>
-                <button
-                  (click)="deleteUser(user.iduser)"
-                  href="#"
-                  class="p-2 border-0 rounded text-dark bg-danger"
-                >
-                  <img
-                    src="../../assets/icons-template/icons/trash.svg"
-                    alt="trash-icon"
-                    width="20"
-                  />
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+<!-- Container -->
+<div class="vh-100 vw-100 row p-5">
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title">Perfil</h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modalRef.hide()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="modalRef.hide()"
+      >
+        Cerrar
+      </button>
+    </div>
+  </ng-template>
+  <div class="p-5">
+    <div class="col-md-2">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar"
+        name="search"
+        (keyup)="searchCoin()"
+        [(ngModel)]="searchText"
+      />
+    </div>
+    <div class="row py-2">
+      <div class="col-md-6">
+        <div class="bg-blue-dark p-1 rounded">
+          <h3 class="text-light text-center fs-5">Lista de preguntas</h3>
+        </div>
+        <div class="d-flex justify-content-end text-muted p-2">
+          {{ numberofquestions }} preguntas encontradas
+        </div>
+        <div
+          class="border-bottom p-2"
+          *ngFor="let question of filteredQuestions"
+        >
+          <a
+            (click)="getQuestionAndRedirect(question.idquestion)"
+            class="text-blue-dark"
+          >
+            <p class="fw-bold">{{ question.statement }}</p>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <!-- Validate if question is different to null -->
+        <div *ngIf="question != null">
+          <div class="bg-blue-dark p-1 rounded">
+            <h3 class="text-light text-center fs-5">
+              {{ question.statement }}
+            </h3>
+          </div>
+          <div class="d-flex justify-content-between text-muted p-2">
+            <div>
+              <p class="text-blue-dark">
+                <span class="fw-bold">Categoria:</span> Programación
+              </p>
+            </div>
+            <p>{{ question.openingdate }} - {{ question.closingdate }}</p>
+          </div>
+          <hr/>
+          <form class="d-flex">
+            <input type="text" placeholder="escribe tu respuesta aquí" class="form-control me-1">
+            <div class="d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-blue-king"
+              >
+              <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="bg-blue-dark p-1 rounded" *ngIf="question == null">
+          <h3 class="text-light text-center fs-5">Pregunta</h3>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+
+

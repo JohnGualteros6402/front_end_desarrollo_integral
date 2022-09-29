@@ -13,7 +13,7 @@ import { QuestionService } from 'src/app/services/question.service';
 })
 export class StatisticsComponent implements OnInit {
   multi: any[];
-  view: [number, number] = [800, 300];
+  view: [number, number] = [700, 300];
 
   // options
   gradient: boolean = true;
@@ -34,13 +34,22 @@ export class StatisticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
+    this.getQuestions();
   }
-  
+
   private getUsers() {
     this.userService.getListUsers().subscribe((data) => {
       this.users = data;
       this.showTotalLengthWithRole(this.users);
     });
+  }
+  private getQuestions(){
+    this.questionService.getListQuestions().subscribe((data) => {
+      this.questions = data;
+    });
+  }
+  reloadGrahps(){
+    window.location.reload();
   }
   showTotalLengthWithRole(users: User[]){
     users.map((user) => {
