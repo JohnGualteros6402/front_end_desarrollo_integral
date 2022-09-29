@@ -1,11 +1,22 @@
-.margin-200{
-  margin: 400px 0 0 130px;
+.margin-200 {
+  margin: 300px 0 0 48px;
 }
 
-.margin-300{
-  margin-left: 110px;
+.margin-300 {
+  margin-left: 40px;
 }
 
-.margin-400{
-  margin-left: 130px;
+.margin-400 {
+  margin-left: 50px;
+}
+
+.column-form {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  justify-content: space-around;
+}
+
+.button-login {
+  width: 95%;
+  margin-left: 2.5%;
 }

@@ -1,13 +1,15 @@
 <app-dashboard-admin></app-dashboard-admin>
 <!--Container Main start-->
 <div class="vh-100 bg-light d-flex align-items-center py-3">
-  <div class="container-table p-5">
+  <div class="container-table p-3">
+    <h1 class="text-center text-blue-dark">Preguntas</h1>
     <div class="alert alert-blue-king m-2" role="alert" *ngIf="questions.length == 0">
       Aún no hay preguntas registradas
     </div>
-    <div class="w-100 d-flex">
+    <div class="w-100 d-flex justify-content-end">
       <button class="btn btn-blue-dark my-3 fw-bold"> <i class="fa-solid fa-file"></i> Generar Reporte</button>
-      <a (click)="openAlertConfirmation()" class="btn btn-blue-dark my-3 ms-2 fw-bold"> <i class="fa-solid fa-plus"></i> Agregar Pregunta</a>
+      <a (click)="openAlertConfirmation()" class="btn btn-blue-dark my-3 ms-2 fw-bold"> <i class="fa-solid fa-plus"></i>
+        Agregar Pregunta</a>
     </div>
     <table class="table" datatable [dtOptions]="dtOptions">
       <thead class="text-center bg-blue-dark text-light fw-bold">
@@ -32,10 +34,12 @@
             {{ question.state == true ? 'Activo' : 'Inactivo' }}
           </td>
           <td>
-            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="question.state == false" (click)="enableQuestion(question.idquestion, question)">
+            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="question.state == false"
+              (click)="enableQuestion(question.idquestion, question)">
               Activar
             </button>
-            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="question.state == true" (click)="disableQuestion(question.idquestion, question)">
+            <button class="btn btn-sm btn-blue-dark rounded" *ngIf="question.state == true"
+              (click)="disableQuestion(question.idquestion, question)">
               Inactivar
             </button>
           </td>
