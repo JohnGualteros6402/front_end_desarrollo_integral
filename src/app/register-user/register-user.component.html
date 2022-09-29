@@ -3,7 +3,8 @@
     <div class="position-fixed text-center">
       <h1 class="margin-200 text-light fs-3">Bienvenido de nuevo</h1>
       <p class="text-light mt-2 margin-300">Gracias por elegir participar para nosotro es es un placer</p>
-      <button class="btn btn-outline-light rounded fw-bold shadow-lg margin-400" routerLink="/login">Iniciar Sesión</button>
+      <button class="btn btn-outline-light rounded fw-bold shadow-lg margin-400" routerLink="/login">Iniciar
+        Sesión</button>
     </div>
   </div>
   <div class=" col-md-8 bg-light p-5">
@@ -11,339 +12,195 @@
       Registrar Usuario
     </h1>
     <form (ngSubmit)="onSubmit()" #userForm="ngForm" method="post">
-      <!-- Input number document -->
-      <div class="mb-3 mt-5">
-        <label for="name" class="fs-5 fw-bold">Número de documento</label>
-        <input
-          type="text"
-          class="form-control"
-          id="numberdocument"
-          placeholder="Digite su número de documento"
-          [(ngModel)]="user.numberdocument"
-          name="numberdocument"
-          required
-          #numberdocument="ngModel"
-        />
-        <div
-          class="text-danger"
-          *ngIf="
-            numberdocument.invalid &&
-            (numberdocument.dirty || numberdocument.touched)
-          "
-        >
-          <div *ngIf="numberdocument.errors?.['required']">
-            El número de documento es obligatorio
+      <div class="column-form">
+
+        <!-- Input number document -->
+        <div class="mb-3">
+          <label for="name" class="fs-5 fw-bold">Número de documento</label>
+          <input type="text" class="form-control" id="numberdocument" placeholder="Digite su número de documento"
+            [(ngModel)]="user.numberdocument" name="numberdocument" required #numberdocument="ngModel" />
+          <div class="text-danger" *ngIf="
+          numberdocument.invalid &&
+          (numberdocument.dirty || numberdocument.touched)
+          ">
+            <div *ngIf="numberdocument.errors?.['required']">
+              El número de documento es obligatorio
+            </div>
+          </div>
+        </div>
+        <!-- Input name -->
+        <div class="mb-3">
+          <label for="name" class="fs-5 fw-bold">Nombre</label>
+          <input type="text" class="form-control" id="name" placeholder="Digite su nombre" [(ngModel)]="user.name"
+            name="name" required #name="ngModel" />
+          <div class="text-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div *ngIf="name.errors?.['required']">El nombre es obligatorio</div>
+          </div>
+        </div>
+        <!-- Input lastname -->
+        <div class="mb-3">
+          <label for="lastname" class="fs-5 fw-bold">Apellido</label>
+          <input type="text" class="form-control" id="lastname" placeholder="Digite su apellido"
+            [(ngModel)]="user.lastname" name="lastname" required #lastname="ngModel" />
+          <div class="text-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+            <div *ngIf="lastname.errors?.['required']">
+              El apellido es obligatorio
+            </div>
+          </div>
+        </div>
+        <!-- Input address -->
+        <div class="mb-3">
+          <label for="address" class="fs-5 fw-bold">Dirección</label>
+          <input type="text" class="form-control" id="address" placeholder="Digite su dirección"
+            [(ngModel)]="user.address" name="address" required #address="ngModel" />
+          <div class="text-danger" *ngIf="address.invalid && (address.dirty || address.touched)">
+            <div *ngIf="address.errors?.['required']">
+              La dirección es obligatorio
+            </div>
+          </div>
+        </div>
+        <!-- Input email -->
+        <div class="mb-3">
+          <label for="email" class="fs-5 fw-bold">Correo</label>
+          <input type="email" class="form-control" id="email" placeholder="Digite su Correo" [(ngModel)]="user.email"
+            name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required #email="ngModel" />
+          <!-- Regex expression for email validation-->
+          <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors?.['required']">
+              El correo es obligatorio.
+            </div>
+            <div *ngIf="email.errors?.['pattern']">
+              El correo deberia tener un email valido. por ejemplo
+              ejemplo@gmail.com
+            </div>
+          </div>
+        </div>
+        <!-- Input numberphone -->
+        <div class="mb-3">
+          <label for="numberphone" class="fs-5 fw-bold">Número de teléfono</label>
+          <input type="text" class="form-control" id="numberphone" placeholder="Digite su teléfono"
+            [(ngModel)]="user.numberphone" name="numberphone" required #numberphone="ngModel" />
+          <div class="text-danger" *ngIf="
+        numberphone.invalid && (numberphone.dirty || numberphone.touched)
+        ">
+            <div *ngIf="numberphone.errors?.['required']">
+              El número de teléfono es obligatorio
+            </div>
+          </div>
+        </div>
+        <!-- Input landline -->
+        <div class="mb-3">
+          <label for="landline" class="fs-5 fw-bold">Número de teléfono fijo</label>
+          <input type="text" class="form-control" id="landline" placeholder="Digite su Número de teléfono fijo"
+            [(ngModel)]="user.landline" name="landline" required #landline="ngModel" />
+          <div class="text-danger" *ngIf="landline.invalid && (landline.dirty || landline.touched)">
+            <div *ngIf="landline.errors?.['required']">
+              El telefono fijo es obligatorio
+            </div>
+          </div>
+        </div>
+        <!-- Input date birth -->
+        <div class="mb-3">
+          <label for="datebirth" class="fs-5 fw-bold">Fecha de nacimiento</label>
+          <input type="date" min="1942-01-01" max="2004-12-31" class="form-control" id="datebirth"
+            placeholder="Digite su fceha de nacieminto" [(ngModel)]="user.datebirth" name="datebirth" required
+            #datebirth="ngModel" />
+          <div class="text-danger" *ngIf="datebirth.invalid && (datebirth.dirty || datebirth.touched)">
+            <div *ngIf="datebirth.errors?.['required']">
+              La fecha de nacimiento es obligatorio
+            </div>
+          </div>
+        </div>
+        <!-- Select municipies -->
+        <div class="mb-3">
+          <label for="municipality" class="fs-5 fw-bold">Municipio</label>
+          <select class="form-control" name="municipality" id="municipality" [(ngModel)]="user.municipality">
+            <option value="{{ municipality }}" *ngFor="let municipality of municipies">
+              {{ municipality.toLowerCase() }}
+            </option>
+          </select>
+        </div>
+        <!-- Select stratum -->
+        <div class="mb-3">
+          <label for="stratum" class="fs-5 fw-bold">Estrato</label>
+          <select class="form-control" name="stratum" [(ngModel)]="user.stratum" id="stratum">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+        <!-- Select academic level -->
+        <div class="mb-3">
+          <label for="academiclevel" class="fs-5 fw-bold">Nivel Academico</label>
+          <select class="form-control" name="academiclevel" id="academiclevel" [(ngModel)]="user.academiclevel">
+            <option value="{{ academicLevel }}" *ngFor="let academicLevel of academicLevels">
+              {{ academicLevel }}
+            </option>
+          </select>
+        </div>
+        <!-- Select sex -->
+        <div class="mb-3">
+          <label for="sex" class="fs-5 fw-bold">Sexo</label>
+          <select class="form-control" name="sex" id="sex" [(ngModel)]="user.sex">
+            <option value="{{ sex }}" *ngFor="let sex of sexs">
+              {{ sex }}
+            </option>
+          </select>
+        </div>
+        <!-- Select affilationregime -->
+        <div class="mb-3">
+          <label for="affiliationregime" class="fs-5 fw-bold">Afiliación del regimen</label>
+          <select class="form-control" name="affiliationregime" id="affiliationregime"
+            [(ngModel)]="user.affiliationregime">
+            <option value="Subsidiado">Subsidiado</option>
+            <option value="Conttributivo">Contributivo</option>
+          </select>
+        </div>
+        <!-- Select sex -->
+        <div class="mb-3">
+          <label for="condition" class="fs-5 fw-bold">Condición de discapacidad</label>
+          <select class="form-control" name="condition" id="condition" [(ngModel)]="user.disabilitycondition">
+            <option value="{{ condition }}" *ngFor="let condition of disabilityconditions">
+              {{ condition }}
+            </option>
+          </select>
+        </div>
+        <!-- Select ethnicity -->
+        <div class="mb-3">
+          <label for="condition" class="fs-5 fw-bold">Etnia</label>
+          <select class="form-control" name="ethnicity" id="ethnicity" [(ngModel)]="user.ethnicity">
+            <option value="{{ ethnicity }}" *ngFor="let ethnicity of ethnicities">
+              {{ ethnicity }}
+            </option>
+          </select>
+        </div>
+        <!-- Select technologicalaccess -->
+        <div class="mb-3">
+          <label for="technologicalaccess" class="fs-5 fw-bold">Acceso de tecnología</label>
+          <select class="form-control" name="technologicalaccess" id="technologicalaccess"
+            [(ngModel)]="user.technologicalaccess">
+            <option value="si">SI</option>
+            <option value="no">NO</option>
+          </select>
+        </div>
+        <!-- Input password -->
+        <div class="mb-3">
+          <label for="password" class="fs-5 fw-bold"> Contraseña </label>
+          <input type="password" class="form-control" id="password" placeholder="1234567890" [(ngModel)]="user.password"
+            name="password" required #password="ngModel" minlength="8" />
+          <div *ngIf="password.errors?.['required']" class="text-danger">
+            La contraseña es obligatorio
+          </div>
+          <div *ngIf="password.errors?.['minlength']" class="text-danger">
+            La contraseña debe tener mínimo 8 caracteres
           </div>
         </div>
       </div>
-      <!-- Input name -->
-      <div class="mb-3">
-        <label for="name" class="fs-5 fw-bold">Nombre</label>
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          placeholder="Digite su nombre"
-          [(ngModel)]="user.name"
-          name="name"
-          required
-          #name="ngModel"
-        />
-        <div
-          class="text-danger"
-          *ngIf="name.invalid && (name.dirty || name.touched)"
-        >
-          <div *ngIf="name.errors?.['required']">El nombre es obligatorio</div>
-        </div>
-      </div>
-      <!-- Input lastname -->
-      <div class="mb-3">
-        <label for="lastname" class="fs-5 fw-bold">Apellido</label>
-        <input
-          type="text"
-          class="form-control"
-          id="lastname"
-          placeholder="Digite su apellido"
-          [(ngModel)]="user.lastname"
-          name="lastname"
-          required
-          #lastname="ngModel"
-        />
-        <div
-          class="text-danger"
-          *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
-        >
-          <div *ngIf="lastname.errors?.['required']">
-            El apellido es obligatorio
-          </div>
-        </div>
-      </div>
-      <!-- Input address -->
-      <div class="mb-3">
-        <label for="address" class="fs-5 fw-bold">Dirección</label>
-        <input
-          type="text"
-          class="form-control"
-          id="address"
-          placeholder="Digite su dirección"
-          [(ngModel)]="user.address"
-          name="address"
-          required
-          #address="ngModel"
-        />
-        <div
-          class="text-danger"
-          *ngIf="address.invalid && (address.dirty || address.touched)"
-        >
-          <div *ngIf="address.errors?.['required']">
-            La dirección es obligatorio
-          </div>
-        </div>
-      </div>
-      <!-- Input email -->
-      <div class="mb-3">
-        <label for="email" class="fs-5 fw-bold">Correo</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          placeholder="Digite su Correo"
-          [(ngModel)]="user.email"
-          name="email"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-          required
-          #email="ngModel"
-        />
-        <!-- Regex expression for email validation-->
-        <div
-          class="text-danger"
-          *ngIf="email.invalid && (email.dirty || email.touched)"
-        >
-          <div *ngIf="email.errors?.['required']">
-            El correo es obligatorio.
-          </div>
-          <div *ngIf="email.errors?.['pattern']">
-            El correo deberia tener un email valido. por ejemplo
-            ejemplo@gmail.com
-          </div>
-        </div>
-      </div>
-      <!-- Input numberphone -->
-      <div class="mb-3">
-        <label for="numberphone" class="fs-5 fw-bold">Número de teléfono</label>
-        <input
-          type="text"
-          class="form-control"
-          id="numberphone"
-          placeholder="Digite su teléfono"
-          [(ngModel)]="user.numberphone"
-          name="numberphone"
-          required
-          #numberphone="ngModel"
-        />
-        <div
-          class="text-danger"
-          *ngIf="
-            numberphone.invalid && (numberphone.dirty || numberphone.touched)
-          "
-        >
-          <div *ngIf="numberphone.errors?.['required']">
-            El número de teléfono es obligatorio
-          </div>
-        </div>
-      </div>
-      <!-- Input landline -->
-      <div class="mb-3">
-        <label for="landline" class="fs-5 fw-bold">Número de teléfono fijo</label>
-        <input
-          type="text"
-          class="form-control"
-          id="landline"
-          placeholder="Digite su Número de teléfono fijo"
-          [(ngModel)]="user.landline"
-          name="landline"
-          required
-          #landline="ngModel"
-        />
-        <div
-          class="text-danger"
-          *ngIf="landline.invalid && (landline.dirty || landline.touched)"
-        >
-          <div *ngIf="landline.errors?.['required']">
-            El telefono fijo es obligatorio
-          </div>
-        </div>
-      </div>
-      <!-- Input date birth -->
-      <div class="mb-3">
-        <label for="datebirth" class="fs-5 fw-bold">Fecha de nacimiento</label>
-        <input
-          type="date"
-          min="1942-01-01"
-          max="2004-12-31"
-          class="form-control"
-          id="datebirth"
-          placeholder="Digite su fceha de nacieminto"
-          [(ngModel)]="user.datebirth"
-          name="datebirth"
-          required
-          #datebirth="ngModel"
-        />
-        <div
-          class="text-danger"
-          *ngIf="datebirth.invalid && (datebirth.dirty || datebirth.touched)"
-        >
-          <div *ngIf="datebirth.errors?.['required']">
-            La fecha de nacimiento es obligatorio
-          </div>
-        </div>
-      </div>
-      <!-- Select municipies -->
-      <div class="mb-3">
-        <label for="municipality" class="fs-5 fw-bold">Municipio</label>
-        <select
-          class="form-control"
-          name="municipality"
-          id="municipality"
-          [(ngModel)]="user.municipality"
-        >
-          <option
-            value="{{ municipality }}"
-            *ngFor="let municipality of municipies"
-          >
-            {{ municipality.toLowerCase() }}
-          </option>
-        </select>
-      </div>
-      <!-- Select stratum -->
-      <div class="mb-3">
-        <label for="stratum" class="fs-5 fw-bold"
-          >Estrato</label
-        >
-        <select class="form-control" name="stratum" [(ngModel)]="user.stratum" id="stratum">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-      </div>
-      <!-- Select academic level -->
-      <div class="mb-3">
-        <label for="academiclevel" class="fs-5 fw-bold">Nivel Academico</label>
-        <select
-          class="form-control"
-          name="academiclevel"
-          id="academiclevel"
-          [(ngModel)]="user.academiclevel"
-        >
-          <option
-            value="{{ academicLevel }}"
-            *ngFor="let academicLevel of academicLevels"
-          >
-            {{ academicLevel }}
-          </option>
-        </select>
-      </div>
-      <!-- Select sex -->
-      <div class="mb-3">
-        <label for="sex" class="fs-5 fw-bold">Sexo</label>
-        <select class="form-control" name="sex" id="sex" [(ngModel)]="user.sex">
-          <option value="{{ sex }}" *ngFor="let sex of sexs">
-            {{ sex }}
-          </option>
-        </select>
-      </div>
-      <!-- Select affilationregime -->
-      <div class="mb-3">
-        <label for="affiliationregime" class="fs-5 fw-bold"
-          >Afiliación del regimen</label
-        >
-        <select
-          class="form-control"
-          name="affiliationregime"
-          id="affiliationregime"
-          [(ngModel)]="user.affiliationregime"
-        >
-          <option value="Subsidiado">Subsidiado</option>
-          <option value="Conttributivo">Contributivo</option>
-        </select>
-      </div>
-      <!-- Select sex -->
-      <div class="mb-3">
-        <label for="condition" class="fs-5 fw-bold"
-          >Condición de discapacidad</label
-        >
-        <select
-          class="form-control"
-          name="condition"
-          id="condition"
-          [(ngModel)]="user.disabilitycondition"
-        >
-          <option
-            value="{{ condition }}"
-            *ngFor="let condition of disabilityconditions"
-          >
-            {{ condition }}
-          </option>
-        </select>
-      </div>
-      <!-- Select ethnicity -->
-      <div class="mb-3">
-        <label for="condition" class="fs-5 fw-bold">Etnia</label>
-        <select
-          class="form-control"
-          name="ethnicity"
-          id="ethnicity"
-          [(ngModel)]="user.ethnicity"
-        >
-          <option value="{{ ethnicity }}" *ngFor="let ethnicity of ethnicities">
-            {{ ethnicity }}
-          </option>
-        </select>
-      </div>
-      <!-- Select technologicalaccess -->
-      <div class="mb-3">
-        <label for="technologicalaccess" class="fs-5 fw-bold"
-          >Acceso de tecnología</label
-        >
-        <select
-          class="form-control"
-          name="technologicalaccess"
-          id="technologicalaccess"
-          [(ngModel)]="user.technologicalaccess"
-        >
-          <option value="si">SI</option>
-          <option value="no">NO</option>
-        </select>
-      </div>
-      <!-- Input password -->
-      <div class="mb-3">
-        <label for="password" class="fs-5 fw-bold"> Contraseña </label>
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          placeholder="1234567890"
-          [(ngModel)]="user.password"
-          name="password"
-          required
-          #password="ngModel"
-          minlength="8"
-        />
-        <div *ngIf="password.errors?.['required']" class="text-danger">
-          La contraseña es obligatorio
-        </div>
-        <div *ngIf="password.errors?.['minlength']" class="text-danger">
-          La contraseña debe tener mínimo 8 caracteres
-        </div>
-      </div>
-      <button
-        class="btn btn-blue-king w-100 fw-bold rounded shadow-sm my-5 fs-5 py-2"
-        id="btnLogin"
-        [disabled]="userForm.invalid"
-      >
+      <button class="button-login btn btn-blue-king fw-bold rounded shadow-sm my-5 fs-5 py-2" id="btnLogin"
+        [disabled]="userForm.invalid">
         Crear Usuario
       </button>
     </form>
