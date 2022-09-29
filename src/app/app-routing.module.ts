@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard/question/:id', component: DashboardComponent },
   { path: 'registerUser', component: RegisterUserComponent},
   { path: 'registerTheme', component: RegisterThemeComponent},
   { path: 'createQuestion', component: CreateQuestionComponent},

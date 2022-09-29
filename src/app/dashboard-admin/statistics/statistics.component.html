@@ -2,6 +2,9 @@
 <!--Container Main start-->
 <div class="vh-100 bg-light d-flex align-items-center py-3">
   <div class="container-table p-5">
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-blue-king fw-bold" (click)="reloadGrahps()">Recargar Graficas</button>
+    </div>
     <h1 class="text-center text-blue-dark">Estadísticas Generales</h1>
     <div class="container-graphs">
       <div class="bg-light rounded p-2" id="container-graph">
@@ -20,8 +23,9 @@
         >
         </ngx-charts-pie-chart>
       </div>
-      <div class="bg-light rounded p-2" id="container-graph">
-        <h1 class="text-center text-blue-dark">Preguntas totales</h1>
+      <div class="bg-light rounded p-2" id="container-graph" *ngIf="questions.length > 0">
+        <h2 class="text-center text-blue-dark fw-bold">Preguntas totales:</h2>
+        <h3 class="fw-bold text-blue-king">{{ questions.length }}</h3>
       </div>
     </div>
   </div>
