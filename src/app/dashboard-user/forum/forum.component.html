@@ -1,0 +1,71 @@
+<app-dashboard-user></app-dashboard-user>
+
+<!-- Container -->
+<div class="vh-100 vw-100 row p-5">
+  <div class="p-5">
+    <div class="col-md-2">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar"
+        name="search"
+        (keyup)="searchQuestion()"
+        [(ngModel)]="searchText"
+      />
+    </div>
+    <div class="row py-2">
+      <div class="col-md-6">
+        <div class="bg-blue-dark p-1 rounded">
+          <h3 class="text-light text-center fs-5">Lista de preguntas</h3>
+        </div>
+        <div class="d-flex justify-content-end text-muted p-2">
+          {{ numberofquestions }} preguntas encontradas
+        </div>
+        <div
+          class="border-bottom p-2"
+          *ngFor="let question of filteredQuestions"
+        >
+          <a
+            (click)="getQuestionAndRedirect(question.idquestion)"
+            class="text-blue-dark"
+          >
+            <p class="fw-bold">{{ question.statement }}</p>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <!-- Validate if question is different to null -->
+        <div *ngIf="question != null">
+          <div class="bg-blue-dark p-1 rounded">
+            <h3 class="text-light text-center fs-5">
+              {{ question.statement }}
+            </h3>
+          </div>
+          <div class="d-flex justify-content-between text-muted p-2">
+            <div>
+              <p class="text-blue-dark">
+                <span class="fw-bold">Categoria:</span> Programación
+              </p>
+            </div>
+            <p>{{ question.openingdate }} - {{ question.closingdate }}</p>
+          </div>
+          <hr/>
+          <form class="d-flex">
+            <input type="text" placeholder="escribe tu respuesta aquí" class="form-control me-1">
+            <div class="d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-blue-king"
+              >
+              <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="bg-blue-dark p-1 rounded" *ngIf="question == null">
+          <h3 class="text-light text-center fs-5">Pregunta</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

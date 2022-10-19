@@ -56,9 +56,6 @@ export class LoginComponent implements OnInit {
     }
     console.log('no esta autenticado');
   }
-  redirectHome() {
-    this.router.navigate(['/employees']);
-  }
   validateUser(): void {
     this.user.password = Md5.hashStr(this.user.password);
     this.userService
@@ -97,7 +94,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/forum']);
             }
           });
-        
+
         console.log('end');
       });
     // console.log(this.user.email+" "+ this.user.password);

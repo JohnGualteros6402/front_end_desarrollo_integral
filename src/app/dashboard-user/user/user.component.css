@@ -1,0 +1,47 @@
+:root {
+  --dark-blue: #262b49;
+  --dark-gray: #1c2039;
+  --light-gray: #e7e6e6;
+  --light: #fff;
+  --header-height: 3rem;
+  --nav-width: 68px;
+  --first-color: #4723d9;
+  --first-color-light: #afa5d9;
+  --white-color: #f7f6fb;
+  --body-font: "Nunito", sans-serif;
+  --normal-font-size: 1rem;
+  --z-fixed: 100;
+}
+.container_user{
+  height: 100%;
+  margin: 0 auto;
+  width: 50%;
+  background-color: var(--dark-gray);
+  border-radius: 10px;
+  padding: 20px;
+  color: var(--light);
+}
+.form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+h1{
+  text-align: center;
+  margin-bottom: 20px;
+}
+label{
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  color: var(--first-color-light);
+}
+input{
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid var(--light-gray);
+  margin: 10px 0;
+  color: var(--light) !important;
+}

@@ -1,0 +1,67 @@
+<app-dashboard-user></app-dashboard-user>
+
+<div class="vh-100 vw-100 row p-5">
+  <div class="p-5">
+    <div class="container_user">
+      <h1>{{ user.name }}</h1>
+      <div class="form">
+        <div>
+          <label for="">Número de documento</label>
+          <input readonly type="number" value="{{ user.numberdocument }}" />
+        </div>
+        <div>
+          <label for="">Nombre</label>
+          <input readonly type="text" value="{{ user.name }}" />
+        </div>
+        <div>
+          <label for="">Dirección</label>
+          <input readonly type="text" value="{{ user.address }}" />
+        </div>
+        <div>
+          <label for="">Correo Electronico</label>
+          <input readonly type="text" value="{{ user.email }}" />
+        </div>
+        <div>
+          <label for="">Número de Celular</label>
+          <input readonly type="text" value="{{ user.numberphone }}" />
+        </div>
+        <div>
+          <label for="">Teléfono</label>
+          <input readonly type="text" value="{{ user.landline }}" />
+        </div>
+        <div>
+          <label for="">Fecha de nacimiento</label>
+          <input readonly type="text" value="{{ user.datebirth }}" />
+        </div>
+        <div>
+          <label for="">Municipio</label>
+          <input readonly type="text" value="{{ user.municipality }}" />
+        </div>
+        <div>
+          <label for="">Estrato</label>
+          <input readonly type="text" value="{{ user.stratum }}" />
+        </div>
+        <div>
+          <label for="">Sexo</label>
+          <input readonly type="text" value="{{ user.sex }}" />
+        </div>
+        <div>
+          <label for="">Afiliación del regimen</label>
+          <input readonly type="text" value="{{ user.affiliationregime }}" />
+        </div>
+        <div>
+          <label for="">Condición de discapacidad</label>
+          <input readonly type="text" value="{{ user.disabilitycondition }}" />
+        </div>
+        <div>
+          <label for="">Etnía</label>
+          <input readonly type="text" value="{{ user.ethnicity }}" />
+        </div>
+        <div>
+          <label for="">Acceso Tecnologíco</label>
+          <input readonly type="text" value="{{ user.technologicalaccess }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

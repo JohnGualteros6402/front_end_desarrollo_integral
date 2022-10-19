@@ -14,7 +14,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RegisterThemeComponent } from './register-theme/register-theme.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
-import { ForumComponent } from './forum/forum.component';
 import { QuestionsComponent } from './questions/questions.component';
 import {DataTablesModule} from 'angular-datatables';
 import { DashboardAdminModule } from './dashboard-admin/dashboard-admin.module';
@@ -34,7 +33,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterUserComponent,
     RegisterThemeComponent,
     CreateQuestionComponent,
-    ForumComponent,
     QuestionsComponent,
     NotfoundComponent
   ],
