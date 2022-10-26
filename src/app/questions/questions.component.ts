@@ -65,12 +65,6 @@ export class QuestionsComponent implements OnInit {
       this.router.navigate(['home']);
     }
   }
-  validateIsAuthenticated() {
-    if (localStorage.getItem('isAuthenticated')) {
-      return;
-    }
-    return this.router.navigate(['login']);
-  }
 
   // Function for open alert for show confirm button if it's clicked then should redirect to view, create new theme
   openAlertCreateThemeConfirm() {

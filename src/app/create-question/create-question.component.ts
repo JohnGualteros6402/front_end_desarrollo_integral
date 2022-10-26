@@ -30,15 +30,8 @@ export class CreateQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSurvay();
-
-    this.validateIsAuthenticated();
   }
-  validateIsAuthenticated() {
-    if (localStorage.getItem('isAuthenticated')) {
-      return;
-    }
-    return this.router.navigate(['login']);
-  }
+  
   saveQuestion() {
     this.questionService.addQuestion(this.question).subscribe(
       (data) => {

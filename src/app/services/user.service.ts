@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../classes/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -36,4 +37,18 @@ export class UserService {
   validationUser(email:string, password:string): Observable<Object>{
     return  this.httpClient.get(`${this.baseURL}/${email}/${password}`);
   }
+
+  validateAuthenticationAdmin(){
+    if(localStorage.getItem('rol') != environment.admin){
+      return false;
+    }
+    return true;
+  }
+  validateAuthenticationUser(){
+    if(localStorage.getItem('rol') != environment.citizen){
+      return false;
+    }
+    return true;
+  }
+
 }

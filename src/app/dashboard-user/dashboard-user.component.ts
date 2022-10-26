@@ -17,7 +17,6 @@ export class DashboardUserComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.validateIsAuthenticated();
     this.getEmailSession();
   }
   ngOnDestroy(): void {}
@@ -34,10 +33,5 @@ export class DashboardUserComponent implements OnInit, OnDestroy {
       this.router.navigate(['home']);
     }
   }
-  validateIsAuthenticated() {
-    if (localStorage.getItem('isAuthenticated')) {
-      return;
-    }
-    return this.router.navigate(['login']);
-  }
+
 }
