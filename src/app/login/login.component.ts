@@ -20,11 +20,12 @@ export class LoginComponent implements OnInit {
   isDark: boolean = false;
   email: HTMLInputElement;
   user: User = new User();
-  isAuthenticated: any = false;
+  isAuthenticated: boolean = false;
   rol: string;
   rolEncript: string;
+  validating: boolean;
 
-  responseValidation: boolean = false;
+  error: boolean = false;
 
   constructor(
     public translate: TranslateService,
@@ -51,52 +52,58 @@ export class LoginComponent implements OnInit {
     }
   }
   validateIsAuthenticated() {
-    if (localStorage.getItem('isAuthenticated')) {
-      this.router.navigate(['dashboard']);
+    if (
+      !localStorage.getItem('isAuthenticated') ||
+      !localStorage.getItem('email') == null
+    ) {
+      return;
     }
-    console.log('no esta autenticado');
+    if (localStorage.getItem('rol') == environment.citizen) {
+      return this.router.navigate(['dashboard']);
+    }
+    return this.router.navigate(['admin']);
   }
+
   validateUser(): void {
+    //Encrypt the password
     this.user.password = Md5.hashStr(this.user.password);
+    //send the user to the service email and password
     this.userService
       .validationUser(this.user.email, this.user.password)
       .subscribe((data) => {
-        this.isAuthenticated = data;
-        localStorage.setItem('isAuthenticated', this.isAuthenticated);
-        localStorage.setItem('email', this.user.email);
-        this.userService
-          .findInformationUsers(this.user.email)
-          .subscribe((data) => {
-            this.rol = data.role;
-            if (this.rol == 'ADMIN') {
-              console.log('h');
-              this.rolEncript = 'b521caa6e1db82e5a01c924a419870cb72b81635';
-            } else if (this.rol == 'CITIZEN') {
-              console.log('ht');
-              this.rolEncript = '176fa46eb4a5911075462cec2db88d963155c883';
-            }
-            localStorage.setItem('rol',this.rolEncript);
-            if (
-              localStorage.getItem('isAuthenticated') &&
-              localStorage.getItem('isAuthenticated') == 'true' &&
-              localStorage.getItem('rol') ==
-                '176fa46eb4a5911075462cec2db88d963155c883'
-            ) {
-              console.log('CIUDA');
-              this.router.navigate(['/dashboard']);
-            } else if (
-              localStorage.getItem('isAuthenticated') &&
-              localStorage.getItem('isAuthenticated') == 'true' &&
-              localStorage.getItem('rol') ==
-                'b521caa6e1db82e5a01c924a419870cb72b81635'
-            ) {
-              console.log('ADMIN');
-              this.router.navigate(['/forum']);
-            }
-          });
-
-        console.log('end');
+        try {
+          //if the user is valid
+          this.isAuthenticated = data ? true : false;
+          //if the user is valid then save in localStorage the authentication and email
+          if (this.isAuthenticated) {
+            localStorage.setItem(
+              'isAuthenticated',
+              String(this.isAuthenticated)
+            );
+            localStorage.setItem('email', this.user.email);
+          }
+          this.userService
+            .findInformationUsers(this.user.email)
+            .subscribe((data) => {
+              this.rol = data.role;
+              this.setRole(this.rol);
+            });
+        } catch (e) {
+          console.log(e);
+          console.log('Error');
+          this.router.navigate(['error']);
+        }
       });
-    // console.log(this.user.email+" "+ this.user.password);
+  }
+  setRole(rol: string) {
+    this.rol = rol;
+    if (this.rol == 'CITIZEN') {
+      this.rol = environment.citizen;
+      this.router.navigate(['dashboard']);
+    } else if (this.rol == 'ADMIN') {
+      this.rol = environment.admin;
+      this.router.navigate(['admin']);
+    }
+    localStorage.setItem('rol', this.rol);
   }
 }

@@ -23,7 +23,8 @@ export class DashboardAdminComponent implements OnInit {
   logout(){
     localStorage.removeItem('email');
     localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('rol');
     this.router.navigate(['/login']);
   }
-  
+
 }

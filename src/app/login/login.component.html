@@ -25,7 +25,10 @@
           </p>
         </div>
       </div>
-      <h1 class="display-4 text-center fw-bold text-blue-king">
+      <div *ngIf="error" class="alert alert-red-deep w-100 justify-content-center text-blue-king d-flex align-items-center">
+        <h5 class="ms-2 text-red-deep">El email y/o contraseña son incorrectos</h5>
+      </div>
+      <h1 class="display-4 text-center fw-bold text-blue-danger">
         {{ "title_login" | translate }}
       </h1>
 

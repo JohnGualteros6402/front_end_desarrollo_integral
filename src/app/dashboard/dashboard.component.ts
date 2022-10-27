@@ -39,7 +39,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.validateIsAuthenticated();
     this.getQuestions();
     this.getEmailSession();
     this.getQuestionById();
@@ -64,12 +63,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.router.navigate(['home']);
     }
   }
-  validateIsAuthenticated() {
-    if (localStorage.getItem('isAuthenticated')) {
-      return;
-    }
-    return this.router.navigate(['login']);
-  }
+
   getQuestionById() {
     this.id = this.route.snapshot.params['id'];
     this.questionService.getQuestionById(this.id).subscribe(
