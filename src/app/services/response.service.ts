@@ -6,10 +6,9 @@ import { Question } from '../classes/question';
 @Injectable({
   providedIn: 'root',
 })
-export class QuestionService {
-  private baseURL = 'http://localhost:8090/api/v1/question';
-
+export class ResponseService {
   constructor(private httpClient: HttpClient) {}
+  private baseURL = 'http://localhost:8090/api/v1/response';
 
   getListQuestions(): Observable<Question[]> {
     return this.httpClient.get<Question[]>(`${this.baseURL}`);

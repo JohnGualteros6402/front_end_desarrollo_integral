@@ -9,14 +9,24 @@ import { SurveyService } from 'src/app/services/survey.service';
 @Component({
   selector: 'app-create-question',
   templateUrl: './create-question.component.html',
-  styleUrls: ['./create-question.component.css']
+  styleUrls: ['./create-question.component.css'],
 })
 export class CreateQuestionComponent implements OnInit {
-
   question: Question = new Question();
   surveys: Survey[];
   idSurvey: number;
   surveyObject: Survey = new Survey();
+  objectSurvey = {
+    statement: '',
+    openingdate: '',
+    closingdate: '',
+    state: true,
+    survey: {
+      idsurvey: 0,
+      theme: '',
+      status: true,
+    },
+  };
   loading: boolean = false;
 
   constructor(
@@ -26,6 +36,7 @@ export class CreateQuestionComponent implements OnInit {
     private http: HttpClient
   ) {
     this.getSurvay();
+    Survey;
     // console.log(this.surveyObject)
   }
 
@@ -33,10 +44,14 @@ export class CreateQuestionComponent implements OnInit {
     this.getSurvay();
   }
 
-  saveQuestion() {
+  saveQuestion(idSurvey: any, theme: string, status: boolean) {
     this.loading = true;
-    this.questionService.addQuestion(this.question).subscribe(
+    this.objectSurvey.survey.idsurvey = idSurvey;
+    this.objectSurvey.survey.theme = theme;
+    this.objectSurvey.survey.status = status;
+    this.questionService.addQuestion(this.objectSurvey).subscribe(
       (data) => {
+        console.log(this.objectSurvey);
         this.loading = false;
         this.redirectListQuestions();
       },
@@ -48,12 +63,8 @@ export class CreateQuestionComponent implements OnInit {
   }
   onSubmit() {
     this.surveyService.getSurveyById(this.idSurvey).subscribe((data) => {
-      this.surveyObject.idsurvey = data['idsurvey'];
-      this.surveyObject.theme = data['theme'];
-      this.surveyObject.status = data['status'];
+      this.saveQuestion(data['idsurvey'], data['theme'], data['status']);
     });
-    this.question.survey = this.surveyObject;
-    this.saveQuestion();
   }
 
   getSurvay() {
@@ -62,5 +73,4 @@ export class CreateQuestionComponent implements OnInit {
       // console.log(this.surveys);
     });
   }
-
 }
