@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -7,11 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-admin.component.css']
 })
 export class DashboardAdminComponent implements OnInit {
-
-
+  
   emailSession: string | null = null;
 
-  constructor(private router: Router) { }
+  public constructor( private router: Router) {
+	}
 
   ngOnInit(): void {
     this.getEmailSession();

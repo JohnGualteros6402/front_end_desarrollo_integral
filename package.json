@@ -22,6 +22,7 @@
     "@ngx-translate/http-loader": "^7.0.0",
     "@swimlane/ngx-charts": "^20.1.0",
     "angular-datatables": "^14.0.0",
+    "angular-notifier": "^12.0.0",
     "aos": "^2.3.4",
     "datatables.net": "^1.12.1",
     "datatables.net-bs5": "^1.11.3",

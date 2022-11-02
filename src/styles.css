@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~angular-notifier/styles";
+
 :root {
   --dark-blue: #262b49;
   --dark-gray: #1c2039;

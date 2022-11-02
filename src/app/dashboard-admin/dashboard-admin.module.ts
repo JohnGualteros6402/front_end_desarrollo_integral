@@ -13,7 +13,6 @@ import { CreateQuestionComponent } from './create-question/create-question.compo
 import { StatisticsComponent } from './statistics/statistics.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-
 @NgModule({
   declarations: [
     UsersComponent,
