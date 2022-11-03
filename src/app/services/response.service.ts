@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Question } from '../classes/question';
+import { Response } from '../classes/response';
 
 @Injectable({
   providedIn: 'root',
@@ -10,20 +10,20 @@ export class ResponseService {
   constructor(private httpClient: HttpClient) {}
   private baseURL = 'http://localhost:8090/api/v1/response';
 
-  getListQuestions(): Observable<Question[]> {
-    return this.httpClient.get<Question[]>(`${this.baseURL}`);
+  getListResponses(): Observable<Response[]> {
+    return this.httpClient.get<Response[]>(`${this.baseURL}`);
   }
-  changeStatusQuestion(id: number, question: Question): Observable<Object> {
-    return this.httpClient.put(`${this.baseURL}/${id}`, question);
+  changeStatusResponse(id: number, response: Response): Observable<Object> {
+    return this.httpClient.put(`${this.baseURL}/${id}`, response);
   }
-  getQuestionById(id: number): Observable<Question> {
-    return this.httpClient.get<Question>(`${this.baseURL}/${id}`);
+  getResponseById(id: number): Observable<Response> {
+    return this.httpClient.get<Response>(`${this.baseURL}/${id}`);
   }
-  addQuestion(question: any): Observable<Object> {
-    console.log(question);
-    return this.httpClient.post(`${this.baseURL}`, question);
+  addResponse(response: any): Observable<Object> {
+    console.log(response);
+    return this.httpClient.post(`${this.baseURL}`, response);
   }
-  deleteQuestion(id: number): Observable<Object> {
+  deleteResponse(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 }

@@ -1,3 +1,4 @@
+import { ResponseService } from './../../services/response.service';
 import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from 'src/app/classes/question';
@@ -9,10 +10,10 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
-  styleUrls: ['./forum.component.css']
+  styleUrls: ['./forum.component.css'],
 })
 export class ForumComponent implements OnInit, OnDestroy {
-
+  response: Response = new Response();
   questions: Question[];
   filteredQuestions: Question[];
   searchText: string = '';
@@ -22,12 +23,26 @@ export class ForumComponent implements OnInit, OnDestroy {
   email: string;
   user: User;
   username: string;
+  idUser: number;
+  idQuestion: number;
+  objectResponse = {
+    response: '',
+    dateresponse: '2022-11-03',
+    status: true,
+    question: {
+      idquestion: 0,
+    },
+    user: {
+      iduser: 0,
+    },
+  };
 
   constructor(
     private questionService: QuestionService,
+    private responseService: ResponseService,
     private router: Router,
     private userService: UserService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   searchQuestion() {
@@ -71,14 +86,21 @@ export class ForumComponent implements OnInit, OnDestroy {
   }
 
   getUserByEmail(email: string) {
-    this.userService.findInformationUsers(email).subscribe(
-      (data: User) => {
-        this.username = data.name;
-      }
-    )
+    this.userService.findInformationUsers(email).subscribe((data: User) => {
+      this.username = data.name;
+      this.idUser = data.iduser;
+    });
   }
 
-  saveResponse(){
+  saveResponse() {
+    this.objectResponse.question.idquestion = this.id;
+    this.objectResponse.user.iduser = this.idUser;
+    this.responseService.addResponse(this.objectResponse).subscribe(
+      (data) => {
+        console.log(this.objectResponse);
+      },
+      (err) => console.log(err)
+    );
     Swal.fire({
       title: 'Estas seguro de responder a esta pregunta?',
       text: 'No podrás revertir esto!',
@@ -98,4 +120,10 @@ export class ForumComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  // onSubmit() {
+  //   this.userService.getUserById(this.idQuestion).subscribe((data) => {
+  //     this.saveResponse(data['iduser']);
+  //   });
+  // }
 }

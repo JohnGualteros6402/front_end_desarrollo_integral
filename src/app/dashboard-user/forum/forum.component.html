@@ -38,14 +38,12 @@
             <p>{{ question.openingdate }} - {{ question.closingdate }}</p>
           </div>
           <hr />
-          <form class="d-flex">
-            <input type="text" placeholder="escribe tu respuesta aquí" class="form-control me-1">
+          <form class="d-flex" #responseForm="ngForm" method="post">
+            <input type="text" name="response" id="response" [(ngModel)]="objectResponse.response"
+              placeholder="escribe tu respuesta aquí" class="form-control me-1">
             <div class="d-flex justify-content-end">
-              <button type="button" class="btn btn-blue-king">
+              <button type="button" class="btn btn-blue-king" (click)="saveResponse()">
                 <i class="fa-solid fa-paper-plane"></i>
-                <button type="button" class="btn btn-blue-king" (click)="saveResponse()">
-                  <i class="fa-solid fa-paper-plane"></i>
-                </button>
               </button>
             </div>
           </form>
