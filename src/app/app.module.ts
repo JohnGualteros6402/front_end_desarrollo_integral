@@ -20,6 +20,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { NotificationComponent } from './commons/notification/notification.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -78,7 +80,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CreateQuestionComponent,
     QuestionsComponent,
     NotfoundComponent,
-    NotificationComponent
+    NotificationComponent,
+    ForgotPasswordComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,
