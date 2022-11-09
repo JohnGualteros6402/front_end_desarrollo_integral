@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateQuestionComponent } from './create-question/create-question.component';
-import { DashboardAdminModule } from './dashboard-admin/dashboard-admin.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { QuestionsComponent } from './questions/questions.component';
-import { RegisterThemeComponent } from './register-theme/register-theme.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AdminGuardGuard } from './guards/admin-guard.guard';
 import { CitizenGuard } from './guards/citizen.guard';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 const routes: Routes = [
   {
@@ -26,6 +24,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'registerUser', component: RegisterUserComponent},
+  { path: 'forgotPassword', component: ForgotPasswordComponent},
+  { path: 'restablecerClave/:email', component: UpdatePasswordComponent},
   { path: 'notfound', component: NotfoundComponent },
   { path: '**', redirectTo: 'notfound' }
 ];

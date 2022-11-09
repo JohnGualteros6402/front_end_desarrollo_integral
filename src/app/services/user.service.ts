@@ -32,6 +32,12 @@ export class UserService {
   deleteUser(id:number): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+  sendEmail(email:string): Observable<Object>{
+    return this.httpClient.get(`${this.baseURL}/forgotpassword/${email}`);
+  }
+  updatePassword(email:string, password:string): Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/updatePassword/${email}`, password);
+  }
 
   // Validation Users (LoginComponent)
   validationUser(email:string, password:string): Observable<Object>{
