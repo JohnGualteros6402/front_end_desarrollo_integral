@@ -27,7 +27,7 @@ export class ForumComponent implements OnInit, OnDestroy {
   idQuestion: number;
   objectResponse = {
     response: '',
-    dateresponse: '2022-11-03',
+    dateresponse: '',
     status: true,
     question: {
       idquestion: 0,
@@ -93,6 +93,15 @@ export class ForumComponent implements OnInit, OnDestroy {
   }
 
   saveResponse() {
+    var date = new Date();
+    var date_local =
+      date.getFullYear() +
+      '-' +
+      (date.getMonth() + 1) +
+      '-0' +
+      (date.getDay() + 1);
+    this.objectResponse.dateresponse = date_local;
+    console.log(date.toDateString());
     this.objectResponse.question.idquestion = this.id;
     this.objectResponse.user.iduser = this.idUser;
     this.responseService.addResponse(this.objectResponse).subscribe(
@@ -120,10 +129,4 @@ export class ForumComponent implements OnInit, OnDestroy {
       }
     });
   }
-
-  // onSubmit() {
-  //   this.userService.getUserById(this.idQuestion).subscribe((data) => {
-  //     this.saveResponse(data['iduser']);
-  //   });
-  // }
 }
