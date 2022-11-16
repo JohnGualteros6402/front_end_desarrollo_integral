@@ -107,7 +107,11 @@ export class ForumComponent implements OnInit, OnDestroy {
   saveResponse() {
     var date = new Date();
     var date_local =
-      date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+      date.getFullYear() +
+      '-' +
+      (date.getMonth() + 1) +
+      '-' +
+      (date.getDate() + 1);
     this.objectResponse.dateresponse = date_local;
     console.log(date.toDateString());
     this.objectResponse.question.idquestion = this.id;

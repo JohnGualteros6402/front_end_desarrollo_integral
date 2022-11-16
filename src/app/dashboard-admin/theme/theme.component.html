@@ -7,7 +7,9 @@
       Aún no hay usuarios registrados
     </div>
     <div class="w-100 d-flex justify-content-end">
-      <button class="btn btn-blue-dark my-3 fw-bold"> <i class="fa-solid fa-file"></i> Generar Reporte</button>
+      <button class="btn btn-blue-dark my-3 fw-bold" (click)="createReportPDF()"> <i class="fa-solid fa-file"></i>
+        Generar
+        Reporte</button>
       <a (click)="openAlertConfirmation()" class="btn btn-blue-dark my-3 ms-2 fw-bold"> <i class="fa-solid fa-plus"></i>
         Agregar Tema</a>
     </div>

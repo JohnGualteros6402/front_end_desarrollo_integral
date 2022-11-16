@@ -8,17 +8,22 @@ import { QuestionService } from 'src/app/services/question.service';
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
-  styleUrls: ['./questions.component.css']
+  styleUrls: ['./questions.component.css'],
 })
 export class QuestionsComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
   questions: Question[];
 
+  questionsLength: number;
+
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger = new Subject<void>();
 
-  constructor(private questionService: QuestionService, private router: Router) {}
+  constructor(
+    private questionService: QuestionService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -34,6 +39,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   private getQuestions() {
     this.questionService.getListQuestions().subscribe((data) => {
       this.questions = data;
+      this.questionsLength = data.length;
       this.dtTrigger.next();
     });
   }
@@ -53,14 +59,16 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.questionService.changeStatusQuestion(id, question).subscribe((data) => {
-          this.getQuestions();
-          Swal.fire(
-            'Activado!',
-            'la pregunta ah sido activada satsifactoriamente.',
-            'success'
-          );
-        });
+        this.questionService
+          .changeStatusQuestion(id, question)
+          .subscribe((data) => {
+            this.getQuestions();
+            Swal.fire(
+              'Activado!',
+              'la pregunta ah sido activada satsifactoriamente.',
+              'success'
+            );
+          });
       }
     });
   }
@@ -76,14 +84,16 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.questionService.changeStatusQuestion(id, question).subscribe((data) => {
-          this.getQuestions();
-          Swal.fire(
-            'Inactivado!',
-            'la pregunta ah sido inactivada satsifactoriamente.',
-            'success'
-          );
-        });
+        this.questionService
+          .changeStatusQuestion(id, question)
+          .subscribe((data) => {
+            this.getQuestions();
+            Swal.fire(
+              'Inactivado!',
+              'la pregunta ah sido inactivada satsifactoriamente.',
+              'success'
+            );
+          });
       }
     });
   }
@@ -99,11 +109,11 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-          Swal.fire(
-            'Redireccionando!',
-            'podrás crear la pregunta en un momento.',
-            'success'
-          ).then(res=>this.router.navigate(['/admin/registerQuestion']))
+        Swal.fire(
+          'Redireccionando!',
+          'podrás crear la pregunta en un momento.',
+          'success'
+        ).then((res) => this.router.navigate(['/admin/registerQuestion']));
       }
     });
   }
