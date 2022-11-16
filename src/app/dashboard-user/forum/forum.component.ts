@@ -56,6 +56,7 @@ export class ForumComponent implements OnInit, OnDestroy {
     this.getQuestions();
     this.getQuestionById();
     this.getEmailSession();
+    this.getResponsesThemes(this.id);
   }
   ngOnDestroy(): void {}
   private getQuestions() {
@@ -89,17 +90,20 @@ export class ForumComponent implements OnInit, OnDestroy {
     this.userService.findInformationUsers(email).subscribe((data: User) => {
       this.username = data.name;
       this.idUser = data.iduser;
+      this.getResponsesThemes(data.iduser);
+    });
+  }
+
+  getResponsesThemes(id: number) {
+    this.responseService.getResponsesUser(id).subscribe((data: any) => {
+      console.log(data);
     });
   }
 
   saveResponse() {
     var date = new Date();
     var date_local =
-      date.getFullYear() +
-      '-' +
-      (date.getMonth() + 1) +
-      '-0' +
-      (date.getDay() + 1);
+      date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     this.objectResponse.dateresponse = date_local;
     console.log(date.toDateString());
     this.objectResponse.question.idquestion = this.id;

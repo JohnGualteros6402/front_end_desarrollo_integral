@@ -32,7 +32,7 @@
           <div class="d-flex justify-content-between text-muted p-2">
             <div>
               <p class="text-blue-dark">
-                <span class="fw-bold">Categoria:</span> Programación
+                <span class="fw-bold">Tema:</span> {{ question.survey.theme }}
               </p>
             </div>
             <p>{{ question.openingdate }} - {{ question.closingdate }}</p>
@@ -51,6 +51,9 @@
         <div class="bg-blue-dark p-1 rounded" *ngIf="question == null">
           <h3 class="text-light text-center fs-5">Pregunta</h3>
         </div>
+      </div>
+      <div class="col-8">
+        <h1>HELLO</h1>
       </div>
     </div>
   </div>

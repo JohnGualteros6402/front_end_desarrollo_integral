@@ -26,4 +26,8 @@ export class ResponseService {
   deleteResponse(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+
+  getResponsesUser(id: number): Observable<Object> {
+    return this.httpClient.get(`${this.baseURL}/user/${id}`);
+  }
 }
