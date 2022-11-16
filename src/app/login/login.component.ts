@@ -81,13 +81,13 @@ export class LoginComponent implements OnInit {
               String(this.isAuthenticated)
             );
             localStorage.setItem('email', this.user.email);
+            this.userService
+              .findInformationUsers(this.user.email)
+              .subscribe((data) => {
+                this.rol = data.role;
+                this.setRole(this.rol);
+              });
           }
-          this.userService
-            .findInformationUsers(this.user.email)
-            .subscribe((data) => {
-              this.rol = data.role;
-              this.setRole(this.rol);
-            });
         } catch (e) {
           console.log(e);
           console.log('Error');

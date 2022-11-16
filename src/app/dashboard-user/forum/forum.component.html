@@ -8,15 +8,15 @@
         [(ngModel)]="searchText" />
     </div>
     <div class="row py-2">
-      <div class="col-md-6">
-        <div class="bg-blue-dark p-1 rounded">
-          <h3 class="text-light text-center fs-5">Lista de preguntas</h3>
+      <div class="col-md-6 questions-container">
+        <div class="p-1 rounded">
+          <h3 class="text-dark fs-5">Lista de preguntas</h3>
         </div>
         <div class="d-flex justify-content-end text-muted p-2">
           {{ numberofquestions }} preguntas encontradas
         </div>
-        <div class="border-bottom p-2" *ngFor="let question of filteredQuestions">
-          <a (click)="getQuestionAndRedirect(question.idquestion)" class="text-blue-dark">
+        <div class="border-bottom border-top p-2" *ngFor="let question of filteredQuestions">
+          <a (click)="getQuestionAndRedirect(question.idquestion)" class="card-question">
             <p class="fw-bold">{{ question.statement }}</p>
           </a>
         </div>
@@ -24,7 +24,7 @@
       <div class="col-md-6">
         <!-- Validate if question is different to null -->
         <div *ngIf="question != null">
-          <div class="bg-blue-dark p-1 rounded">
+          <div class="p-1 rounded bg-blue-dark">
             <h3 class="text-light text-center fs-5">
               {{ question.statement }}
             </h3>
@@ -47,6 +47,23 @@
               </button>
             </div>
           </form>
+
+          <div class="responses-container">
+            <div class="response" *ngFor="let response of responsesDependOfId">
+              <div class="header-response">
+                <p>
+                  {{ response.user.name }} {{ response.user.lastname }}
+                </p>
+
+                <p>
+                  {{ response.dateresponse }}
+                </p>
+              </div>
+              <div class="body-response">
+                {{ response.response }}
+              </div>
+            </div>
+          </div>
         </div>
         <div class="bg-blue-dark p-1 rounded" *ngIf="question == null">
           <h3 class="text-light text-center fs-5">Pregunta</h3>
