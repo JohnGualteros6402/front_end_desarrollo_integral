@@ -25,6 +25,8 @@ export class ForumComponent implements OnInit, OnDestroy {
   username: string;
   idUser: number;
   idQuestion: number;
+  responses: any[];
+  responsesDependOfId: any[];
   objectResponse = {
     response: '',
     dateresponse: '',
@@ -36,6 +38,8 @@ export class ForumComponent implements OnInit, OnDestroy {
       iduser: 0,
     },
   };
+
+  colorQuestion: string | null;
 
   constructor(
     private questionService: QuestionService,
@@ -56,6 +60,7 @@ export class ForumComponent implements OnInit, OnDestroy {
     this.getQuestions();
     this.getQuestionById();
     this.getEmailSession();
+    this.getResponses();
   }
   ngOnDestroy(): void {}
   private getQuestions() {
@@ -126,7 +131,36 @@ export class ForumComponent implements OnInit, OnDestroy {
           `gracias ${this.username} por responder la pregunta ${this.id}`,
           'success'
         );
+        window.location.reload();
       }
     });
+  }
+
+  getResponses(){
+    this.responseService.getListResponses().subscribe((data) => {
+      this.responses = data;
+      this.getResponsesDependOfId(this.id);
+    });
+  }
+
+  getResponsesDependOfId(id: number){
+    this.responsesDependOfId = this.responses.filter((response) => response.question.idquestion == id);
+    console.log(this.responsesDependOfId);
+  }
+
+  generateNumber(number: number) {
+    return (Math.random()*number).toFixed(0);
+  }
+  
+  // colorRGB(){
+  //   var color = "("+this.generateNumber(255)+"," + this.generateNumber(255) + "," + this.generateNumber(255) +")";
+  //   this.randomColor.push("rgb" + color);
+  //   console.log(this.randomColor);
+  //   return this.randomColor;
+  // }
+
+  colorRGB(){
+    var color = "("+this.generateNumber(255)+"," + this.generateNumber(255) + "," + this.generateNumber(255) +")";
+    return "rgb" + color;
   }
 }

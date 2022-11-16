@@ -26,12 +26,12 @@ export class DashboardUserComponent implements OnInit, OnDestroy {
   }
 
   logout() {
+    localStorage.removeItem('rol');
     if (localStorage.getItem('isAuthenticated')) {
       localStorage.removeItem('isAuthenticated');
-      localStorage.removeItem('rol');
       localStorage.removeItem('email');
-      this.router.navigate(['home']);
     }
+    this.router.navigate(['home']);
   }
 
 }
