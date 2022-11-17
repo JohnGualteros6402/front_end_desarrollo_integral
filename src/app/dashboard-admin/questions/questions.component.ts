@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
 import { Question } from 'src/app/classes/question';
 import { QuestionService } from 'src/app/services/question.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-questions',
@@ -116,5 +117,16 @@ export class QuestionsComponent implements OnInit, OnDestroy {
         ).then((res) => this.router.navigate(['/admin/registerQuestion']));
       }
     });
+  }
+
+  name = 'Questions.xlsx';
+  exportToExcel(): void {
+    let element = document.getElementById('question-tble');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    const book: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
+
+    XLSX.writeFile(book, this.name);
   }
 }

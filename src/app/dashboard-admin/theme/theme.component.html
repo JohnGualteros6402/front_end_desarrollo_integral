@@ -7,13 +7,12 @@
       Aún no hay usuarios registrados
     </div>
     <div class="w-100 d-flex justify-content-end">
-      <button class="btn btn-blue-dark my-3 fw-bold" (click)="createReportPDF()"> <i class="fa-solid fa-file"></i>
-        Generar
-        Reporte</button>
+      <button class="btn btn-blue-dark my-3 fw-bold" (click)="exportToExcel()">
+        <i class="fa-solid fa-file-excel me-2"></i>Generar Excel</button>
       <a (click)="openAlertConfirmation()" class="btn btn-blue-dark my-3 ms-2 fw-bold"> <i class="fa-solid fa-plus"></i>
         Agregar Tema</a>
     </div>
-    <table class="table" datatable [dtOptions]="dtOptions">
+    <table class="table" id="theme-tble" datatable [dtOptions]="dtOptions">
       <thead class="text-center bg-blue-dark text-light fw-bold">
         <tr>
           <th class="text-center">id</th>

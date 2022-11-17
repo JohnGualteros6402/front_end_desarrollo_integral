@@ -6,8 +6,7 @@ import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-// import * as pdfMake from 'pdfmake/build/pdfmake';
-// import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-users',
@@ -179,5 +178,16 @@ export class UsersComponent implements OnInit, OnDestroy {
         });
       }
     });
+  }
+
+  name = 'Users.xlsx';
+  exportToExcel(): void {
+    let element = document.getElementById('user-tble');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    const book: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
+
+    XLSX.writeFile(book, this.name);
   }
 }

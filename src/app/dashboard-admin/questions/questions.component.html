@@ -7,14 +7,15 @@
       Aún no hay preguntas registradas
     </div>
     <div class="w-100 d-flex justify-content-end">
-      <button class="btn btn-blue-dark my-3 fw-bold"> <i class="fa-solid fa-file"></i> Generar Reporte</button>
+      <button class="btn btn-blue-dark my-3 fw-bold" (click)="exportToExcel()"> <i class="fa-solid fa-file-excel"></i>
+        Generar Excel</button>
       <a (click)="openAlertConfirmation()" class="btn btn-blue-dark my-3 ms-2 fw-bold"> <i class="fa-solid fa-plus"></i>
         Agregar Pregunta</a>
     </div>
     <h1 class="text-center fw-bold text-blue-dark">
       Lista de Preguntas
     </h1>
-    <table class="table" datatable [dtOptions]="dtOptions">
+    <table class="table" id="question-tble" datatable [dtOptions]="dtOptions">
       <thead class="text-center bg-blue-dark text-light fw-bold">
         <tr>
           <th class="text-center">id</th>
