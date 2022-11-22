@@ -5,82 +5,31 @@
       <img src="../../assets/logos/logo_eskrive_black.png" alt="LOGO" width="150" *ngIf="!isDark">
       <img src="../../assets/logos/logo_eskrive_white.png" alt="LOGO" width="150" *ngIf="isDark">
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse pt-3" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
         <!-- LINKS NAVBAR -->
-        <a
-          class="nav-link fw-bold"
-          id="menu-link"
-          href="#home"
-          >{{ "link_one_index" | translate }}</a
-        >
-        <a
-          class="nav-link fw-bold"
-          id="menu-link"
-          href="#about"
-          >{{ "link_two_index" | translate }}</a
-        >
-        <a
-          class="nav-link fw-bold"
-          id="menu-link"
-          href="#services"
-          >{{ "link_three_index" | translate }}</a
-        >
-        <a
-          class="nav-link fw-bold"
-          id="menu-link"
-          href="#contact"
-          >{{ "link_four_index" | translate }}</a
-        >
-        <a
-          class="nav-link btn btn-blue-king text-light fw-bold mt-1 mb-3 me-2"
-          routerLink="/login"
-          >{{ "button_navbar" | translate }}</a
-        >
+        <a class="nav-link fw-bold" id="menu-link" href="#home">{{ "link_one_index" | translate }}</a>
+        <a class="nav-link fw-bold" id="menu-link" href="#about">{{ "link_two_index" | translate }}</a>
+        <a class="nav-link fw-bold" id="menu-link" href="#services">{{ "link_three_index" | translate }}</a>
+        <a class="nav-link fw-bold" id="menu-link" href="#contact">{{ "link_four_index" | translate }}</a>
+        <a class="nav-link btn btn-blue-king text-light fw-bold mt-1 mb-3 me-2"
+          routerLink="/login">{{ "button_navbar" | translate }}</a>
         <div class="d-flex">
-          <button
-            class="nav-link fw-bold bg-transparent border-0 mb-4"
-            id="icon_mode"
-            (click)="toggleDarkMode()"
-            [(ngModel)]="buttonMode"
-            [innerHTML]="!isDark ? iconMoon : iconSun"
-          ></button>
+          <button class="nav-link fw-bold bg-transparent border-0 mb-4" id="icon_mode" (click)="toggleDarkMode()"
+            [(ngModel)]="buttonMode" [innerHTML]="!isDark ? iconMoon : iconSun"></button>
           <!-- FLAGS  -->
           <div id="flags" class="d-flex">
-            <p
-              class="nav-link"
-              data-language="es"
-              (click)="changeLanguage('es')"
-            >
+            <p class="nav-link" data-language="es" (click)="changeLanguage('es')">
               <img src="../assets/img/españa.png" alt="españa" width="20" />
             </p>
-            <p
-              class="nav-link"
-              data-language="en"
-              (click)="changeLanguage('en')"
-            >
-              <img
-                src="../assets/img/reino_unido.png"
-                alt="reino unido"
-                width="20"
-              />
+            <p class="nav-link" data-language="en" (click)="changeLanguage('en')">
+              <img src="../assets/img/reino_unido.png" alt="reino unido" width="20" />
             </p>
-            <p
-              class="nav-link"
-              data-language="fr"
-              (click)="changeLanguage('fr')"
-            >
+            <p class="nav-link" data-language="fr" (click)="changeLanguage('fr')">
               <img src="../assets/img/frances.png" alt="francia" width="20" />
             </p>
           </div>
@@ -92,12 +41,8 @@
 <!-- Home -->
 <div class="container" id="home">
   <div class="row vh-100 gap-5">
-    <div
-      class="col-md-6 d-flex flex-column justify-content-center h-100 text-center text-md-justify"
-      data-aos="fade-down"
-      data-aos-duration="1000"
-      data-aos-delay="500"
-    >
+    <div class="col-md-6 d-flex flex-column justify-content-center h-100 text-center text-md-justify"
+      data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500">
       <h1 class="text-blue-king display-5 fw-bold mb-2">
         {{ "title_home_section" | translate }}
       </h1>
@@ -105,36 +50,21 @@
         {{ "description_home_section" | translate }}
       </p>
       <!-- Button trigger modal -->
-      <a
-        class="open-modal btn btn-teal fs-4 fw-bold col-6 py-2 mx-auto"
-        routerLink="/registerUser"
-      >
+      <a class="open-modal btn btn-teal fs-4 fw-bold col-6 py-2 mx-auto" routerLink="/registerUser">
         {{ "button_home_section" | translate }}
       </a>
     </div>
-    <div
-      class="col-md-5 justify-content-center align-items-center h-100 d-none d-md-flex"
-      data-aos="zoom-in-left"
-      data-aos-duration="1000"
-      data-aos-delay="500"
-    >
-      <img
-        src="../assets/img/undraw_share_opinion_re_4qk7.svg"
-        alt="Developers Illustration"
-        id="image-home"
-      />
+    <div class="col-md-5 justify-content-center align-items-center h-100 d-none d-md-flex" data-aos="zoom-in-left"
+      data-aos-duration="1000" data-aos-delay="500">
+      <img src="../assets/img/undraw_share_opinion_re_4qk7.svg" alt="Developers Illustration" id="image-home" />
     </div>
   </div>
 </div>
 <!-- About -->
 <div class="container" id="about">
   <div class="row vh-100 gap-5">
-    <div
-      class="col-md-6 d-flex flex-column justify-content-center"
-      data-aos="fade-up-right"
-      data-aos-duration="1000"
-      data-aos-delay="500"
-    >
+    <div class="col-md-6 d-flex flex-column justify-content-center" data-aos="fade-up-right" data-aos-duration="1000"
+      data-aos-delay="500">
       <h5 class="fs-4 mb-2 fw-bold text-blue-king text-center">
         {{ "subtitle_about_section" | translate }}
       </h5>
@@ -145,17 +75,10 @@
         {{ "description_about_section" | translate }}
       </p>
     </div>
-    <div
-      class="col-md-5 d-flex justify-content-center align-items-center"
-      data-aos="fade-up-left"
-      data-aos-duration="1000"
-      data-aos-delay="500"
-    >
-      <img
-        src="../assets/img/undraw_social_interaction_re_dyjh.svg"
-        alt="Developers Team Illustration"
-        id="image-home"
-      />
+    <div class="col-md-5 d-flex justify-content-center align-items-center" data-aos="fade-up-left"
+      data-aos-duration="1000" data-aos-delay="500">
+      <img src="../assets/img/undraw_social_interaction_re_dyjh.svg" alt="Developers Team Illustration"
+        id="image-home" />
     </div>
   </div>
 </div>
@@ -163,12 +86,8 @@
 <div class="container" id="services">
   <div class="row d-flex justify-content-between" id="container-cards-services">
     <!-- First Card -->
-    <div
-      class="col-md-4 d-flex justify-content-center align-items-center flex-column text-center"
-      data-aos="fade-up"
-      data-aos-duration="1000"
-      data-aos-delay="500"
-    >
+    <div class="col-md-4 d-flex justify-content-center align-items-center flex-column text-center" data-aos="fade-up"
+      data-aos-duration="1000" data-aos-delay="500">
       <h3>
         {{ "card_01_title" | translate }}
       </h3>
@@ -178,12 +97,8 @@
       <div class="w-100 bg-primary p-1"></div>
     </div>
     <!-- Second Card -->
-    <div
-      class="col-md-4 d-flex justify-content-center align-items-center flex-column text-center"
-      data-aos="fade-up"
-      data-aos-duration="1200"
-      data-aos-delay="500"
-    >
+    <div class="col-md-4 d-flex justify-content-center align-items-center flex-column text-center" data-aos="fade-up"
+      data-aos-duration="1200" data-aos-delay="500">
       <h3>
         {{ "card_02_title" | translate }}
       </h3>
@@ -193,12 +108,8 @@
       <div class="w-100 bg-info p-1"></div>
     </div>
     <!-- Three Card -->
-    <div
-      class="col-md-4 d-flex justify-content-center align-items-center flex-column text-center"
-      data-aos="fade-up"
-      data-aos-duration="1400"
-      data-aos-delay="500"
-    >
+    <div class="col-md-4 d-flex justify-content-center align-items-center flex-column text-center" data-aos="fade-up"
+      data-aos-duration="1400" data-aos-delay="500">
       <h3>
         {{ "card_03_title" | translate }}
       </h3>
@@ -217,24 +128,9 @@
       <img src="../../assets/logos/logo_eskrive_white.png" alt="LOGO" width="90" *ngIf="isDark">
     </h2>
     <div>
-      <img
-        src="../assets/icons-template/icons/twitter.svg"
-        alt=""
-        width="30"
-        class="mx-3"
-      />
-      <img
-        src="../assets/icons-template/icons/facebook.svg"
-        alt=""
-        width="30"
-        class="mx-3"
-      />
-      <img
-        src="../assets/icons-template/icons/youtube.svg"
-        alt=""
-        width="30"
-        class="mx-3"
-      />
+      <img src="../assets/icons-template/icons/twitter.svg" alt="" width="30" class="mx-3" />
+      <img src="../assets/icons-template/icons/facebook.svg" alt="" width="30" class="mx-3" />
+      <img src="../assets/icons-template/icons/youtube.svg" alt="" width="30" class="mx-3" />
     </div>
   </div>
   <div class="text-center">
@@ -243,4 +139,3 @@
     </p>
   </div>
 </footer>
-

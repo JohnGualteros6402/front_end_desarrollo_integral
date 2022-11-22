@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.translate.addLangs(['en', 'es']);
-    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang('es');
     this.translate.use(this.language);
   }
 
@@ -92,6 +92,8 @@ export class LoginComponent implements OnInit {
           console.log(e);
           console.log('Error');
           this.router.navigate(['error']);
+        } finally {
+          this.user.password = '';
         }
       });
   }

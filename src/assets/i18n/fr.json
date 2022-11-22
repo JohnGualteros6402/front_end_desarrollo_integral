@@ -16,7 +16,7 @@
   "card_02_description": "Attestation de participation",
   "card_03_title": "Pour toi",
   "card_03_description": "Questions faites et pensées pour vous",
-  "footer_title": "©John Gualteros 2022. Tous droits réservés.",
+  "footer_title": "©Eskrive 2022. Tous droits réservés.",
   "title_login": "Connexion",
   "label_email": "Messagerie électronique",
   "label_password": "le mot de passe",
@@ -31,7 +31,10 @@
   "register_label_email": "Courrier électronique",
   "register_label_numberDocument": "Numéro de document",
   "text_register": "Retourner",
+  "text_forgot": "Tu as oublié ton mot de passe?",
+  "text_forgot_link": "Restaurer",
+
   "text_register_link": "Cliquez ici",
-  "error_password" : "le mot de passe doit avoir un minimum de 8 caractères",
-  "error_numberdocument" : "le document numéroté ne peut être que des nombres"
+  "error_password": "le mot de passe doit avoir un minimum de 8 caractères",
+  "error_numberdocument": "le document numéroté ne peut être que des nombres"
 }

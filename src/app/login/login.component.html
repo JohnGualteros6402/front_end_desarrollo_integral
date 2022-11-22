@@ -3,7 +3,7 @@
     <img src="../../assets/img/54950.jpg" class="w-100 h-100" />
   </div>
   <div class="col-md-7 d-flex justify-content-center align-items-center flex-column">
-    <form class="w-75" id="formLogin" #employeeForm="ngForm">
+    <form class="w-75" id="formLogin" #employeeForm="ngForm" autocomplete="off">
       <div class="w-100 d-flex justify-content-between align-items-center">
         <div>
           <a class="navbar-brand" routerLink="/home">
@@ -25,7 +25,8 @@
           </p>
         </div>
       </div>
-      <div *ngIf="error" class="alert alert-red-deep w-100 justify-content-center text-blue-king d-flex align-items-center">
+      <div *ngIf="error"
+        class="alert alert-red-deep w-100 justify-content-center text-blue-king d-flex align-items-center">
         <h5 class="ms-2 text-red-deep">El email y/o contraseña son incorrectos</h5>
       </div>
       <h1 class="display-4 text-center fw-bold text-blue-danger">
@@ -90,7 +91,8 @@
           {{ "text_regist" | translate }}
         </a></span>
       <br>
-      <span>Se te olvido la contraseña? <a routerLink="/forgotPassword" class="text-blue-king fw-bold">Restablecer</a></span>
+      <span>{{ "text_forgot" | translate }}<a routerLink="/forgotPassword"
+          class="text-blue-king fw-bold">{{ "text_forgot_link" | translate }}</a></span>
     </p>
   </div>
 </section>

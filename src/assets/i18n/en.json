@@ -16,7 +16,7 @@
   "card_02_description": "Certification for participating",
   "card_03_title": "For you",
   "card_03_description": "Questions made and thought for you",
-  "footer_title": "©John Gualteros 2022. All rights reserved.",
+  "footer_title": "©Eskrive 2022. All rights reserved.",
 
   "title_login": "Sign In",
   "label_email": "Email",
@@ -26,6 +26,9 @@
   "text_redirect": "Click Here",
   "text_login_2": "You not are register ?",
   "text_regist": "Create Account",
+
+  "text_forgot": "You forgot your password?",
+  "text_forgot_link": "Restore Password",
 
   "register_title": "Register",
   "register_label_name": "Name",

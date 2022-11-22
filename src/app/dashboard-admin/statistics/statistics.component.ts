@@ -6,6 +6,7 @@ import { User } from 'src/app/classes/user';
 import { Question } from 'src/app/classes/question';
 import { QuestionService } from 'src/app/services/question.service';
 import { SurveyService } from 'src/app/services/survey.service';
+import { ResponseService } from 'src/app/services/response.service';
 
 @Component({
   selector: 'app-statistics',
@@ -26,23 +27,27 @@ export class StatisticsComponent implements OnInit {
   users: User[];
   questions: Question[];
   surveys: Survey[];
+  responses: any;
   adminLength: number = 0;
   clientLength: number = 0;
 
   usersLength: number;
   questionsLength: number;
   surveysLength: number;
+  responsesLength: number;
 
   constructor(
     private userService: UserService,
     private questionService: QuestionService,
-    private surveyService: SurveyService
+    private surveyService: SurveyService,
+    private responseService: ResponseService
   ) {}
 
   ngOnInit(): void {
     this.getUsers();
     this.getQuestions();
     this.getSurveys();
+    this.getResponses();
   }
 
   private getUsers() {
@@ -66,6 +71,13 @@ export class StatisticsComponent implements OnInit {
     });
   }
 
+  private getResponses() {
+    this.responseService.getListResponses().subscribe((data) => {
+      this.responses = data;
+      this.responsesLength = data.length;
+      console.log('Hola este es el length' + this.responsesLength);
+    });
+  }
   reloadGrahps() {
     window.location.reload();
   }
@@ -110,47 +122,93 @@ export class StatisticsComponent implements OnInit {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
     var dd = {
+      info: {
+        title: 'Reporte Información Eskrive',
+        author: 'Eskrive',
+      },
       content: [
         {
           text: 'REPORTE',
           style: 'tittle',
         },
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam.\n\n',
+        ' ',
+        ' ',
+        ' ',
+        ' ',
+        'Reporte generado por Eskrive, en donde se presenta la información recolectada.',
         {
-          text: 'Subheader 1 - using subheader style',
+          text: 'USUARIOS',
           style: 'subheader',
         },
+        {
+          text: `Número de usuarios: ${this.usersLength}\n\n`,
+        },
+
+        {
+          text: 'TEMAS',
+          style: 'subheader',
+        },
+        {
+          text: `Número de temas: ${this.surveysLength}\n\n`,
+        },
+
+        {
+          text: 'PREGUNTAS',
+          style: 'subheader',
+        },
+        {
+          text: `Número de preguntas: ${this.questionsLength}`,
+        },
+
+        {
+          text: 'RESPUESTAS',
+          style: 'subheader',
+        },
+        {
+          text: `Número de respuestas: ${this.responsesLength}`,
+          style: 'subheader',
+        },
+        {
+          text: `Numero de respuestas que han sido respondidas por un usuario en el sistema. \n\n`,
+        },
+
         {
           style: 'tableExample',
           table: {
             body: [
               [
                 'Número de Usuarios',
-                'Número de preguntas',
-                'Número de respuestas',
+                'Número de Temas',
+                'Número de Preguntas',
+                'Número de Respuestas',
               ],
               [
-                `${this.usersLength}`,
-                `${this.questionsLength}`,
-                `${this.surveysLength}`,
+                `${this.usersLength / 100} %   `,
+                `${this.questionsLength / 100} % `,
+                `${this.surveysLength / 100} %`,
+                `${this.responsesLength / 100} % `,
               ],
             ],
           },
         },
-        '',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.\n\n',
+        '\n\n\nOBJETIVO',
+        '- Conocer los diferentes puntos de vista de los ciudadanos.',
+        '- Buscar un patron en las respuestas para tomar decisiones igualitarias para todos.',
+        '- Integridad en las respuestas para que toda opinión llegue tal cual fue escrita.',
         {
-          text: 'Subheader 2 - using subheader style',
-          style: 'subheader',
+          text: '\n\n\nPROCEDIMIENTOS \n 1. Planteamiento de preguntas estrategicas y con nececidades para la ciudadania. \n 2. Disponibilidad para que el usuario pueda dar su opinión sobre el tema de su preferencia.\n 3. Recolección de opiniones mediante formularios virtuales. \n 4. Generación de certificados para constatar la participación del ciudadano en el sistema. \n 5. La opinión tendra discreción para guardar el bienestar dle usuario.\n\n',
+          styles: 'texto',
         },
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Confectum ponit legam, perferendis nomine miserum, animi. Moveat nesciunt triari naturam posset, eveniunt specie deorsus efficiat sermone instituendarum fuisse veniat, eademque mutat debeo. Delectet plerique protervi diogenem dixerit logikh levius probabo adipiscuntur afficitur, factis magistra inprobitatem aliquo andriam obiecta, religionis, imitarentur studiis quam, clamat intereant vulgo admonitionem operis iudex stabilitas vacillare scriptum nixam, reperiri inveniri maestitiam istius eaque dissentias idcirco gravis, refert suscipiet recte sapiens oportet ipsam terentianus, perpauca sedatio aliena video.\n\n',
         {
-          text: 'It is possible to apply multiple styles, by passing an array. This paragraph uses two styles: quote and small. When multiple styles are provided, they are evaluated in the specified order which is important in case they define the same properties',
-          style: ['quote', 'small'],
+          text: ' En la máxima medida permitida por la ley aplicable, en ningún caso el [propietario de la página web] será responsable por daños indirectos, punitivos, incidentales, especiales, consecuentes o ejemplares, incluidos, entre otros, daños por pérdida de beneficios, buena voluntad, uso, datos. u otras pérdidas intangibles, que surjan de o estén relacionadas con el uso o la imposibilidad de utilizar el servicio.\n  ',
+          style: 'texto',
         },
+        ' \n\n',
+        {
+          text: 'SISTEMA DE INFORMACIÓN PARA LA PARTICIPACIÓN CIUDADANA.',
+          style: 'style1',
+        },
+        { text: '@2022', style: 'style1' },
       ],
       styles: {
         tittle: {
@@ -167,6 +225,12 @@ export class StatisticsComponent implements OnInit {
         },
         small: {
           fontSize: 8,
+        },
+        style1: {
+          fontSize: 16,
+          bold: true,
+          alignment: 'center',
+          color: 'blue',
         },
       },
     };

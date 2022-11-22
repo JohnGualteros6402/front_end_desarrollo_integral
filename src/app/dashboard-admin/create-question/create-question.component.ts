@@ -44,6 +44,12 @@ export class CreateQuestionComponent implements OnInit {
     this.getSurvay();
   }
 
+  delimiterDate() {
+    // let dateInit = <string>document.getElementById('openingDate');
+    // let dateFinish = document.getElementById('closingdate');
+    // console.log(dateInit);
+  }
+
   saveQuestion(idSurvey: any, theme: string, status: boolean) {
     this.loading = true;
     this.objectSurvey.survey.idsurvey = idSurvey;

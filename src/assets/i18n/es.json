@@ -16,7 +16,7 @@
   "card_02_description": "Certificación por participar",
   "card_03_title": "Para Tí",
   "card_03_description": "Preguntas hechas y pensadas para tí",
-  "footer_title": "©John Gualteros 2022. Todos los derechos reservados.",
+  "footer_title": "©Eskrive 2022. Todos los derechos reservados.",
   "title_login": "Iniciar Sesión",
   "label_email": "Correo Electrónico",
   "label_password": "Contraseña",
@@ -32,7 +32,8 @@
   "register_label_numberDocument": "Número de documento",
   "text_register": "Volver atrás",
   "text_register_link": "Click aquí",
+  "text_forgot": "Se te olvido tu contraseña?",
+  "text_forgot_link": "Restablecer",
   "error_password": "la contraseña debe tener un minimo de 8 caracteres",
   "error_numberdocument": "el documento numérico solo puede ser números"
-
 }

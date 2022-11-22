@@ -17,8 +17,9 @@
         </div>
         <div class="mb-3">
           <label for="" class="fs-5 fw-bold my-2">Fecha de inicio</label>
-          <input type="date" name="openingDate" id="openingDate" [(ngModel)]="objectSurvey.openingdate"
-            class="form-control" placeholder="" aria-describedby="helpId" required />
+          <input type="date" name="openingDate" (change)="delimiterDate()" id="openingDate"
+            [(ngModel)]="objectSurvey.openingdate" class="form-control" placeholder="" aria-describedby="helpId"
+            required />
         </div>
         <div class="mb-3">
           <label for="" class="fs-5 fw-bold my-2">Fecha de Cierre</label>

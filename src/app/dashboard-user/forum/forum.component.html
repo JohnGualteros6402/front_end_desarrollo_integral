@@ -38,7 +38,7 @@
             <p>{{ question.openingdate }} - {{ question.closingdate }}</p>
           </div>
           <hr />
-          <form class="d-flex" #responseForm="ngForm" method="post">
+          <form class="d-flex" #responseForm="ngForm" method="post" autocomplete="off">
             <input type="text" name="response" id="response" [(ngModel)]="objectResponse.response"
               placeholder="escribe tu respuesta aquí" class="form-control me-1">
             <div class="d-flex justify-content-end">
