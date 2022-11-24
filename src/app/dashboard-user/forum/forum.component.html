@@ -74,8 +74,8 @@
         <div class="header-response" *ngFor="let data of dataAny">
           <div class="d-flex justify-content-between w-100 my-2">
             <p>{{ data.question.survey.theme }} {{  data.dateresponse }} </p>
-            <button type="button" class="btn btn-blue-king"
-              (click)="createReportPDF( data.user.name+' '+ data.user.lastname, data.user.numberdocument, data.question.statement, data.dateresponse)">Certificado
+            <button type="button" class="btn btn-blue-king" (click)="createReportPDF( data.user.name+' '+ data.user.lastname, data.user.numberdocument,
+              data.question.survey.theme ,data.question.statement, data.dateresponse)">Certificado
               <i class="fa-solid fa-arrow-down"></i>
             </button>
           </div>
