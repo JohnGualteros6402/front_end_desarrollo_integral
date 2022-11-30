@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { Survey } from 'src/app/classes/survey';
 import { SurveyService } from 'src/app/services/survey.service';
 import * as XLSX from 'xlsx';
+import { ExcelThemeService } from 'src/app/services/exceltheme.service';
 
 @Component({
   selector: 'app-theme',
@@ -20,7 +21,11 @@ export class ThemeComponent implements OnInit, OnDestroy {
   // thus we ensure the data is fetched before rendering
   dtTrigger = new Subject<void>();
 
-  constructor(private surveyService: SurveyService, private router: Router) {}
+  constructor(
+    private surveyService: SurveyService,
+    private exservice: ExcelThemeService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -111,14 +116,9 @@ export class ThemeComponent implements OnInit, OnDestroy {
     });
   }
 
-  name = 'Themes.xlsx';
   exportToExcel(): void {
-    let element = document.getElementById('theme-tble');
-    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
-
-    const book: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
-
-    XLSX.writeFile(book, this.name);
+    this.surveyService.getThemes().subscribe((response) => {
+      this.exservice.downloadExcelThemes(response);
+    });
   }
 }

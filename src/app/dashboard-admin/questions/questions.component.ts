@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { Question } from 'src/app/classes/question';
 import { QuestionService } from 'src/app/services/question.service';
 import * as XLSX from 'xlsx';
+import { ExcelQuestionService } from 'src/app/services/excelquestion.service';
 
 @Component({
   selector: 'app-questions',
@@ -23,6 +24,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
 
   constructor(
     private questionService: QuestionService,
+    private exservices: ExcelQuestionService,
     private router: Router
   ) {}
 
@@ -119,14 +121,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     });
   }
 
-  name = 'Questions.xlsx';
   exportToExcel(): void {
-    let element = document.getElementById('question-tble');
-    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
-
-    const book: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
-
-    XLSX.writeFile(book, this.name);
+    this.questionService.getQuestions().subscribe((response) => {
+      this.exservices.downloadExcelQuestions(response);
+    });
   }
 }

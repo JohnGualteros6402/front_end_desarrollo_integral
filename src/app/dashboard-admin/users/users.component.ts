@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import * as XLSX from 'xlsx';
+import { ExcelService } from 'src/app/services/excel.service';
 
 @Component({
   selector: 'app-users',
@@ -23,7 +24,11 @@ export class UsersComponent implements OnInit, OnDestroy {
   // thus we ensure the data is fetched before rendering
   dtTrigger = new Subject<void>();
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private excelService: ExcelService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -180,14 +185,9 @@ export class UsersComponent implements OnInit, OnDestroy {
     });
   }
 
-  name = 'Users.xlsx';
   exportToExcel(): void {
-    let element = document.getElementById('user-tble');
-    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
-
-    const book: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
-
-    XLSX.writeFile(book, this.name);
+    this.userService.getUsers().subscribe((response) => {
+      this.excelService.downloadExcelUsers(response);
+    });
   }
 }

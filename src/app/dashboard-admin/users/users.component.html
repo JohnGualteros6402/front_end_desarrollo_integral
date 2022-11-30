@@ -42,50 +42,5 @@
       </tbody>
     </table>
   </div>
-  <div hidden>
-    <table class="table" id="user-tble">
-      <thead class="text-center bg-blue-dark text-light fw-bold">
-        <tr>
-          <th>Id</th>
-          <th>Numero de Documento</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Correo Electronico</th>
-          <th>Dirección</th>
-          <th>Celular</th>
-          <th>Telefono Fijo</th>
-          <th>Fecha de Nacimiento</th>
-          <th>Municipio</th>
-          <th>Estrato</th>
-          <th>Nivel Academico</th>
-          <th>Genero</th>
-          <th>Afiliacion</th>
-          <th>Discapacidad</th>
-          <th>Etnia</th>
-          <th>Acceso a la tecnologia</th>
-        </tr>
-      </thead>
-      <tbody class="text-center">
-        <tr *ngFor="let user of users">
-          <td>{{ user.iduser }}</td>
-          <td>{{ user.numberdocument }}</td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.lastname }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.address }}</td>
-          <td>{{ user.numberphone }}</td>
-          <td>{{ user.landline }}</td>
-          <td>{{ user.datebirth }}</td>
-          <td>{{ user.municipality }}</td>
-          <td>{{ user.stratum }}</td>
-          <td>{{ user.academiclevel }}</td>
-          <td>{{ user.sex }}</td>
-          <td>{{ user.affiliationregime }}</td>
-          <td>{{ user.disabilitycondition }}</td>
-          <td>{{ user.ethnicity }} </td>
-          <td>{{ user.technologicalaccess }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
 </div>
